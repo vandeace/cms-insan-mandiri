@@ -1,4 +1,4 @@
-import NextAuth, { User } from "next-auth";
+import NextAuth, { CredentialsSignin, User } from "next-auth";
 import { authConfig } from "./auth.config";
 import Credentials from "next-auth/providers/credentials";
 import { z } from "zod";
@@ -8,15 +8,19 @@ async function getUser(
   password: string
 ): Promise<User | undefined> {
   try {
-    const res = await fetch(`https://absence.sigesit.id/api/auth/login`, {
+    const res = await fetch(`${process.env.BE_URL_PRODUCTION}api/auth/login`, {
       method: "POST",
       body: JSON.stringify({ email, password }),
       headers: { "Content-Type": "application/json" },
     });
+
     const user = await res.json();
-    return user;
+    if (user.status == "OK") {
+      return user;
+    } else {
+      return undefined;
+    }
   } catch (error) {
-    console.error("Failed to fetch user:", error);
     throw new Error("Failed to fetch user.");
   }
 }
@@ -33,6 +37,7 @@ export const { auth, signIn, signOut } = NextAuth({
         if (parsedCredentials.success) {
           const { email, password } = parsedCredentials.data;
           const user = await getUser(email, password);
+
           if (!user) {
             return null;
           } else {
