@@ -16,7 +16,7 @@ async function getUser(
 
     const user = await res.json();
     if (user.status == "OK") {
-      return user;
+      return user.data;
     } else {
       return undefined;
     }
@@ -25,7 +25,7 @@ async function getUser(
   }
 }
 
-export const { auth, signIn, signOut } = NextAuth({
+export const { auth, handlers, signIn, signOut } = NextAuth({
   ...authConfig,
   providers: [
     Credentials({
