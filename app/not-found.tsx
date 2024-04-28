@@ -11,13 +11,13 @@ export default function NotFoundPage() {
     <div className="flex h-screen items-center justify-center w-full flex-col">
       <Image
         alt="not-found"
-        src={"/images/not-found.svg"}
+        src={"/images/not-found-image.jpg"}
         width={300}
         height={300}
       />
       <Button
         className="w-[200px] mt-3"
-        onClick={() => router.push("/dashboard")}
+        onClick={() => router.push("/dashboard/employee")}
       >
         Back To Dashboard
       </Button>

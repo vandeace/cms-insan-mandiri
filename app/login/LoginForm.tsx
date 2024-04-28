@@ -3,19 +3,9 @@
 import { TLogin, TLoginScheme } from "@/types/login";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
-import { FiEye, FiEyeOff } from "react-icons/fi";
 import { authenticate } from "@/app/api/lib/action";
-import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
+import { Form } from "@/components/ui/form";
 import * as z from "zod";
 import { useForm } from "react-hook-form";
 import InputForm from "@/components/input-form";

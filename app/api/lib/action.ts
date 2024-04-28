@@ -1,5 +1,5 @@
 "use server";
-import { signIn, signOut } from "@/auth";
+import { auth, signIn, signOut } from "@/auth";
 import { AuthError } from "next-auth";
 
 export async function authenticate(formData: any) {
