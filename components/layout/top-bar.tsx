@@ -3,10 +3,19 @@ import { twMerge } from "tailwind-merge";
 import { CgProfile } from "react-icons/cg";
 import { useDashboardContext } from "@/hooks/dashboard-context";
 import { useSession } from "next-auth/react";
+import { useEffect } from "react";
 
 export const TopBar = () => {
   const context = useDashboardContext();
   const session = useSession();
+
+  useEffect(() => {
+    const localToken = localStorage.getItem("token");
+    if (localToken === "undefined" && session.status !== "unauthenticated") {
+      console.log(session?.data?.user.token, "token");
+      localStorage.setItem("token", session?.data?.user.token);
+    }
+  }, [session]);
 
   return (
     <div
