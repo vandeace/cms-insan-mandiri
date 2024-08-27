@@ -5,15 +5,11 @@ import { Sidebar } from "@/components/layout/sidebar";
 import { TopBar } from "@/components/layout/top-bar";
 import axiosInstance from "@/config/api";
 import { DashboardProvider } from "@/hooks/dashboard-context";
-import {
-  QueryCache,
-  QueryClient,
-  QueryClientProvider,
-} from "@tanstack/react-query";
-import { AxiosError } from "axios";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useSession } from "next-auth/react";
 import { redirect } from "next/navigation";
-
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 export default function Layout({ children }: { children: React.ReactNode }) {
   const { data, status } = useSession();
 
@@ -47,6 +43,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           <Sidebar />
           <div className="flex-1">
             <TopBar />
+            <ToastContainer autoClose={1500} position="top-center" />
             <Content>{children}</Content>
           </div>
         </div>

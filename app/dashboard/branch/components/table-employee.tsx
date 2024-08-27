@@ -1,6 +1,5 @@
 "use client";
 import { DataTableX } from "@/components/datatable";
-import { useGetEmployee } from "@/hooks/api/use-get-employee";
 import { useSession } from "next-auth/react";
 import { columnsAdmin, columnsSuperAdmin } from "./column-header";
 import { PaginationState } from "@tanstack/react-table";
@@ -10,7 +9,7 @@ import useMutableSearchParams from "@/hooks/param";
 import { useDebounce } from "use-debounce";
 import { UseGetAllBranch } from "@/hooks/api/use-get-branch";
 
-export default function TableEmployee() {
+export default function TableBranch() {
   const session = useSession();
 
   const user = session?.data?.user as unknown as TTokenData;
