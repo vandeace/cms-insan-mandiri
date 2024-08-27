@@ -8,6 +8,7 @@ import { useState } from "react";
 import { TTokenData } from "@/types/auth";
 import useMutableSearchParams from "@/hooks/param";
 import { useDebounce } from "use-debounce";
+import { UseGetAllBranch } from "@/hooks/api/use-get-branch";
 
 export default function TableEmployee() {
   const session = useSession();
@@ -23,7 +24,7 @@ export default function TableEmployee() {
 
   const [search] = useDebounce(searchParams.get("search"), 1000);
 
-  const { data } = useGetEmployee({
+  const { data } = UseGetAllBranch({
     page: pagination.pageIndex + 1,
     filter: {
       search: search ?? "",

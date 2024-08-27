@@ -1,21 +1,19 @@
 import { Button } from "@/components/ui/button";
-import { TEmployee } from "@/types/employee";
+import { TBranch } from "@/types/branches";
 import { createColumn } from "@/utils/table";
 import { createColumnHelper } from "@tanstack/react-table";
 import Link from "next/link";
 import { FaEdit } from "react-icons/fa";
 
-export const columnHelper = createColumnHelper<TEmployee>();
+export const columnHelper = createColumnHelper<TBranch>();
 
 export const columnsSuperAdmin = [
   columnHelper.display({
     id: "No",
     size: 5,
+    maxSize: 5,
     header: () =>
-      createColumn(
-        "No",
-        "text-left text-[#202124] font-bold text-sm max-w-[10px]"
-      ),
+      createColumn("No", "text-left text-[#202124] font-bold text-sm w-[20px]"),
     cell: (info) => <div className="py-1">{info.row.index + 1}</div>,
   }),
   columnHelper.display({
@@ -30,46 +28,27 @@ export const columnsSuperAdmin = [
     ),
   }),
   columnHelper.display({
-    id: "nik",
-    size: 40,
+    id: "address",
+    size: 80,
     header: () =>
-      createColumn("NIK", "text-left text-[#202124] font-bold text-sm"),
+      createColumn("Alamat", "text-left text-[#202124] font-bold text-sm"),
     cell: (info) => (
       <div className="text-sm">
-        <p className="py-1">{info.row.original.nik}</p>
+        <p className="py-1">{info.row.original.address}</p>
       </div>
     ),
   }),
   columnHelper.display({
-    id: "telephone_number",
+    id: "Total Karyawan",
     size: 80,
     header: () =>
-      createColumn("No Telepon", "text-left text-[#202124] font-bold text-sm"),
+      createColumn(
+        "Total Karyawan",
+        "text-center text-[#202124] font-bold text-sm"
+      ),
     cell: (info) => (
-      <div className="text-sm">
-        <p className="py-1">{info.row.original.phoneNumber}</p>
-      </div>
-    ),
-  }),
-  columnHelper.display({
-    id: "branch",
-    size: 80,
-    header: () =>
-      createColumn("Kantor", "text-left text-[#202124] font-bold text-sm"),
-    cell: (info) => (
-      <div className="text-sm">
-        <p className="py-1">{info.row.original.branch.name}</p>
-      </div>
-    ),
-  }),
-  columnHelper.display({
-    id: "jabatan",
-    size: 80,
-    header: () =>
-      createColumn("Jabatan", "text-left text-[#202124] font-bold text-sm"),
-    cell: (info) => (
-      <div className="text-sm">
-        <p className="py-1">{info.row.original?.position?.name}</p>
+      <div className="text-center text-sm">
+        <p className="py-1">{info.row.original._count.users}</p>
       </div>
     ),
   }),
@@ -80,8 +59,8 @@ export const columnsSuperAdmin = [
       createColumn("Action", "text-center text-[#202124] font-bold text-sm"),
     cell: (info) => (
       <div className="flex items-center justify-center">
-        <Link href={`/dashboard/employee/${info.row.original.id}`}>
-          <Button variant="default" className="bg-secondary-blue text-[#fff]">
+        <Link href={`/branches/${info.row.original.id}`}>
+          <Button variant="secondary" className="bg-secondary-blue text-[#fff]">
             <FaEdit className="mr-2" />
             Edit
           </Button>
@@ -94,9 +73,10 @@ export const columnsSuperAdmin = [
 export const columnsAdmin = [
   columnHelper.display({
     id: "No",
-    size: 30,
+    size: 5,
+    maxSize: 5,
     header: () =>
-      createColumn("No", "text-left text-[#202124] font-bold text-sm"),
+      createColumn("No", "text-left text-[#202124] font-bold text-sm w-[20px]"),
     cell: (info) => <div className="py-1">{info.row.index + 1}</div>,
   }),
   columnHelper.display({
@@ -111,46 +91,27 @@ export const columnsAdmin = [
     ),
   }),
   columnHelper.display({
-    id: "nik",
-    size: 40,
+    id: "address",
+    size: 80,
     header: () =>
-      createColumn("NIK", "text-left text-[#202124] font-bold text-sm"),
+      createColumn("Alamat", "text-left text-[#202124] font-bold text-sm"),
     cell: (info) => (
       <div className="text-sm">
-        <p className="py-1">{info.row.original.nik}</p>
+        <p className="py-1">{info.row.original.address}</p>
       </div>
     ),
   }),
   columnHelper.display({
-    id: "telephone_number",
+    id: "Total Karyawan",
     size: 80,
     header: () =>
-      createColumn("No Telepon", "text-left text-[#202124] font-bold text-sm"),
+      createColumn(
+        "Total Karyawan",
+        "text-center text-[#202124] font-bold text-sm"
+      ),
     cell: (info) => (
-      <div className="text-sm">
-        <p className="py-1">{info.row.original.phoneNumber}</p>
-      </div>
-    ),
-  }),
-  columnHelper.display({
-    id: "branch",
-    size: 80,
-    header: () =>
-      createColumn("Kantor", "text-left text-[#202124] font-bold text-sm"),
-    cell: (info) => (
-      <div className="text-sm">
-        <p className="py-1">{info.row.original.branch.name}</p>
-      </div>
-    ),
-  }),
-  columnHelper.display({
-    id: "jabatan",
-    size: 80,
-    header: () =>
-      createColumn("Jabatan", "text-left text-[#202124] font-bold text-sm"),
-    cell: (info) => (
-      <div className="text-sm">
-        <p className="py-1">{info.row.original?.position?.name}</p>
+      <div className="text-center text-sm">
+        <p className="py-1">{info.row.original._count.users}</p>
       </div>
     ),
   }),

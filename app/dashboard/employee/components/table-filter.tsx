@@ -8,7 +8,7 @@ export default function TableFilter() {
     <div className="grid grid-cols-3">
       <div className="grid w-full max-w-sm items-center gap-2">
         <EmployeeSearch
-          key="search"
+          name="search"
           label="Karyawan"
           placeholder="Cari Karyawan"
         />
