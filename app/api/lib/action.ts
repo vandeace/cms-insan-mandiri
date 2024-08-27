@@ -4,7 +4,10 @@ import { AuthError } from "next-auth";
 
 export async function authenticate(formData: any) {
   try {
-    await signIn("credentials", { ...formData, redirectTo: "/dashboard" });
+    await signIn("credentials", {
+      ...formData,
+      redirectTo: "/dashboard/employee",
+    });
   } catch (error) {
     if (error instanceof AuthError) {
       switch (error.type) {

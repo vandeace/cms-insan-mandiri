@@ -37,27 +37,6 @@ export const editBranch = async (formData: TBranch) => {
   }
 };
 
-export const branchesRequest = async (
-  params: TPaginatedRequest<TBranchFilter>
-) => {
-  const { page = 1, limit = 10, filter } = params;
-  const filterParams = filter ? (filter as TBranchFilter) : undefined;
-
-  try {
-    const { data } = await axiosInstance.get(`/branches`, {
-      params: {
-        page: page,
-        limit: limit,
-        search: filterParams?.search,
-      },
-    });
-
-    return data;
-  } catch {
-    throw new Error("Unexpected Error");
-  }
-};
-
 export const branchesDetailRequest = async (id: string) => {
   try {
     const { data } = await axiosInstance.get(`/branches/${id}`);

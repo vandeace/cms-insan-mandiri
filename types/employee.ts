@@ -34,8 +34,8 @@ export interface TEmployeeEditForm extends TEmployeeCreateForm {
 
 export type TEmployeeFilter = {
   search?: string;
-  positionId?: { label: string; value: string };
-  branchId?: { label: string; value: string };
+  positionId?: string;
+  branchId?: string;
 };
 
 export type TEmployeeFormProps = {

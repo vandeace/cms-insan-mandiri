@@ -1,6 +1,5 @@
 import { Disclosure } from "@headlessui/react";
 import Link from "next/link";
-// import { signOut } from "next-auth/react";
 import { useContext } from "react";
 import { AiOutlineLogout } from "react-icons/ai";
 import { twMerge } from "tailwind-merge";

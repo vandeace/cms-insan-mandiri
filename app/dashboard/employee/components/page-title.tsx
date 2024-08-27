@@ -11,7 +11,6 @@ export default function Title() {
   const user = session?.data?.user as unknown as TTokenData;
 
   const router = useRouter();
-  console.log(user, "user");
   return (
     <div className="mb-3 flex items-center justify-between rounded-md bg-[#fff] p-4 drop-shadow-2xl">
       <PageTitle>Data Karyawan</PageTitle>

@@ -3,11 +3,43 @@
 import { Content } from "@/components/layout/content";
 import { Sidebar } from "@/components/layout/sidebar";
 import { TopBar } from "@/components/layout/top-bar";
+import axiosInstance from "@/config/api";
 import { DashboardProvider } from "@/hooks/dashboard-context";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import {
+  QueryCache,
+  QueryClient,
+  QueryClientProvider,
+} from "@tanstack/react-query";
+import { AxiosError } from "axios";
+import { useSession } from "next-auth/react";
+import { redirect } from "next/navigation";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
-  const queryClient = new QueryClient({});
+  const { data, status } = useSession();
+
+  axiosInstance.interceptors.response.use(
+    (response) => response,
+    (error) => {
+      if (error.response.status === 401) {
+        if (status === "authenticated") {
+          localStorage.setItem("token", data.user.token);
+        } else {
+          redirect("api/auth/signin");
+        }
+      }
+      return Promise.reject(error);
+    }
+  );
+  const queryClient = new QueryClient({
+    defaultOptions: {
+      queries: {
+        queryFn: async ({ queryKey }) => {
+          const response = await axiosInstance.get(queryKey[0] as string);
+          return response.data;
+        },
+      },
+    },
+  });
   return (
     <QueryClientProvider client={queryClient}>
       <DashboardProvider>

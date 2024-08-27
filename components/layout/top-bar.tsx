@@ -3,19 +3,12 @@ import { twMerge } from "tailwind-merge";
 import { CgProfile } from "react-icons/cg";
 import { useDashboardContext } from "@/hooks/dashboard-context";
 import { useSession } from "next-auth/react";
+import { disconnect } from "@/app/api/lib/action";
 import { useEffect } from "react";
 
 export const TopBar = () => {
   const context = useDashboardContext();
-  const session = useSession();
-
-  useEffect(() => {
-    const localToken = localStorage.getItem("token");
-    if (localToken === "undefined" && session.status !== "unauthenticated") {
-      console.log(session?.data?.user.token, "token");
-      localStorage.setItem("token", session?.data?.user.token);
-    }
-  }, [session]);
+  const { data } = useSession();
 
   return (
     <div
@@ -27,9 +20,7 @@ export const TopBar = () => {
       <div className="flex">
         <CgProfile size="38px" />
         <div className="mr-3 hidden items-center sm:flex ml-3">
-          <div className="mr-2 text-sm font-bold">
-            {session?.data?.user?.name}
-          </div>
+          <div className="mr-2 text-sm font-bold">{data?.user?.name}</div>
         </div>
       </div>
     </div>

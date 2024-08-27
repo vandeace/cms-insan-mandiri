@@ -1,6 +1,6 @@
 "use client";
 import { DataTableX } from "@/components/datatable";
-import { useGetEmployee } from "@/hooks/use-get-employee";
+import { useGetEmployee } from "@/hooks/api/use-get-employee";
 import { useSession } from "next-auth/react";
 import { columnsAdmin, columnsSuperAdmin } from "./column-header";
 import { PaginationState } from "@tanstack/react-table";
