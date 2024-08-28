@@ -83,14 +83,14 @@ export const columns = [
     header: () =>
       createColumn(
         "Action",
-        "text-center pr-10 text-[#202124] font-bold text-sm max-w-[150px]"
+        "text-center text-[#202124] font-bold text-sm max-w-[150px]"
       ),
     maxSize: 10,
     cell: (info) => {
       const tipe =
         info.row.original.status === "PENDING" ? "approve" : "detail";
       return (
-        <div>
+        <div className="flex justify-center">
           <PermissionAction permissionData={info.row.original} tipe={tipe} />
         </div>
       );

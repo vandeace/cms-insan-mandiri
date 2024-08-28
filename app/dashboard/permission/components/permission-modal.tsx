@@ -37,7 +37,7 @@ export const PermissionModalAction: React.FC<PermissionModalActionProps> = ({
 }) => {
   const { mutate } = useUpdatePermission();
   const queryClient = useQueryClient();
-
+  // TODO: fix query invalidate
   const renderRow = (label: string, value: string, valueClassName?: string) => {
     return (
       <div className="grid grid-cols-2 text-sm font-bold text-[#202124]">
