@@ -41,12 +41,12 @@ export const SidebarMenu = () => {
                 pathname.includes(link)
                   ? "text-secondary-blue"
                   : "hover:text-secondary-blue",
-                context?.showDesktopSidebar ? "" : ""
+                context?.showDesktopSidebar ? "" : "",
               )}
             >
               <Icon
                 className={twMerge(
-                  context?.showDesktopSidebar ? "mr-2" : "mx-auto"
+                  context?.showDesktopSidebar ? "mr-2" : "mx-auto",
                 )}
               />
 
@@ -54,7 +54,7 @@ export const SidebarMenu = () => {
                 <div
                   className={twMerge(
                     "flex-1 text-left ",
-                    pathname === link ? "font-bold" : "font-medium"
+                    pathname === link ? "font-bold" : "font-medium",
                   )}
                 >
                   {title}
@@ -73,13 +73,13 @@ export const SidebarMenu = () => {
                       "mb-1 flex h-[34px] w-full items-center rounded-[5px] p-2 text-lg",
                       children && isMenuActive(children)
                         ? "text-secondary-blue"
-                        : "hover:text-secondary-blue"
+                        : "hover:text-secondary-blue",
                     )}
                     onClick={() => context?.setShowDesktopSidebar(true)}
                   >
                     <Icon
                       className={twMerge(
-                        context?.showDesktopSidebar ? "mr-2" : "mx-auto"
+                        context?.showDesktopSidebar ? "mr-2" : "mx-auto",
                       )}
                     />
 
@@ -105,7 +105,7 @@ export const SidebarMenu = () => {
                             "h-[34px] rounded-[5px] pl-10 text-base font-medium flex items-center",
                             pathname === childItem.link
                               ? "text-secondary-blue"
-                              : "hover:text-secondary-blue"
+                              : "hover:text-secondary-blue",
                           )}
                         >
                           {childItem.title}
@@ -116,7 +116,7 @@ export const SidebarMenu = () => {
                 </>
               )}
             </Disclosure>
-          )
+          ),
         )}
       </div>
       <div className="flex h-[34px] items-center justify-center hover:cursor-pointer">

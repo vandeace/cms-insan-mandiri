@@ -1,7 +1,7 @@
-import { SVGProps } from 'react'
+import { SVGProps } from "react";
 
 export const ArrowIcon = (
-  props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>
+  props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>,
 ) => {
   return (
     <svg
@@ -17,5 +17,5 @@ export const ArrowIcon = (
         fill="currentColor"
       />
     </svg>
-  )
-}
+  );
+};

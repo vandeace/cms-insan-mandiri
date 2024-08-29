@@ -5,7 +5,7 @@ import { TResponse } from "@/types/response";
 import { useQuery } from "@tanstack/react-query";
 
 export const useGetPermission = (
-  params: TPaginatedRequest<TPermissionFilter>
+  params: TPaginatedRequest<TPermissionFilter>,
 ) => {
   return useQuery<TResponse<TPermission>>({
     queryKey: ["permission", params],

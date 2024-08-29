@@ -41,7 +41,7 @@ const useDashboardContext = () => {
   const context = useContext(DashboardContext);
   if (context === undefined) {
     throw new Error(
-      "usePaginationContext must be used within a PaginationProvider"
+      "usePaginationContext must be used within a PaginationProvider",
     );
   }
   return context;

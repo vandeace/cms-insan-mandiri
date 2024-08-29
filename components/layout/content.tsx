@@ -9,7 +9,7 @@ export const Content = ({ children }: PropsWithChildren) => {
     <div
       className={twMerge(
         "pt-[58px]",
-        context?.showDesktopSidebar ? "pl-[250px]" : "pl-[80px]"
+        context?.showDesktopSidebar ? "pl-[250px]" : "pl-[80px]",
       )}
     >
       <div className="p-6">{children}</div>

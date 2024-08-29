@@ -5,7 +5,7 @@ import { z } from "zod";
 
 async function getUser(
   email: string,
-  password: string
+  password: string,
 ): Promise<User | undefined> {
   try {
     const res = await fetch(`${process.env.BE_URL_PRODUCTION}api/auth/login`, {

@@ -1,7 +1,7 @@
-import { SVGProps } from 'react'
+import { SVGProps } from "react";
 
 export const EyeIcon = (
-  props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>
+  props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>,
 ) => {
   return (
     <svg
@@ -21,5 +21,5 @@ export const EyeIcon = (
         fill="currentColor"
       />
     </svg>
-  )
-}
+  );
+};

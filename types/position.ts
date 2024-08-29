@@ -1,4 +1,4 @@
 export type TPosition = {
-  id: string
-  name: string
-}
+  id: string;
+  name: string;
+};

@@ -6,7 +6,10 @@
     "dev": "next dev -p 3002",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,md,mdx,css,yaml,yml}\"",
+    "check": "prettier --check \"**/*.{ts,tsx,js,jsx,md,mdx,css,yaml,yml}\"",
+    "prepare": "husky"
   },
   "dependencies": {
     "@headlessui/react": "^1.7.19",
@@ -43,7 +46,9 @@
     "@types/react-modal": "^3.16.3",
     "eslint": "^8",
     "eslint-config-next": "14.2.2",
+    "husky": "^9.1.5",
     "postcss": "^8",
+    "prettier": "^3.3.3",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
   }

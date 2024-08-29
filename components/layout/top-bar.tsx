@@ -14,7 +14,7 @@ export const TopBar = () => {
     <div
       className={twMerge(
         "fixed right-0 z-10 flex h-[58px] justify-end px-6 py-2.5 border-b-2 bg-columbia-blue",
-        context?.showDesktopSidebar ? "left-[250px]" : "left-[80px]"
+        context?.showDesktopSidebar ? "left-[250px]" : "left-[80px]",
       )}
     >
       <div className="flex">

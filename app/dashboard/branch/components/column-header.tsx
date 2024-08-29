@@ -44,7 +44,7 @@ export const columnsSuperAdmin = [
     header: () =>
       createColumn(
         "Total Karyawan",
-        "text-center text-[#202124] font-bold text-sm"
+        "text-center text-[#202124] font-bold text-sm",
       ),
     cell: (info) => (
       <div className="text-center text-sm">
@@ -107,7 +107,7 @@ export const columnsAdmin = [
     header: () =>
       createColumn(
         "Total Karyawan",
-        "text-center text-[#202124] font-bold text-sm"
+        "text-center text-[#202124] font-bold text-sm",
       ),
     cell: (info) => (
       <div className="text-center text-sm">

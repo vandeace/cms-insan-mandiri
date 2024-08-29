@@ -61,19 +61,19 @@ export const TEmployeeScheme = z.object({
     { value: z.string(), label: z.string() },
     {
       required_error: "Jabatan harus diisi",
-    }
+    },
   ),
   branchId: z.object(
     { value: z.string(), label: z.string() },
     {
       required_error: "Kantor harus diisi",
-    }
+    },
   ),
   role: z.object(
     { value: z.string(), label: z.string() },
     {
       required_error: "Role harus diisi",
-    }
+    },
   ),
   phoneNumber: z
     .number({

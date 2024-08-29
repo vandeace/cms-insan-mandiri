@@ -58,7 +58,7 @@ export const DataTableX = <T,>(props: TProps<T>) => {
                     ? undefined
                     : flexRender(
                         header.column.columnDef.header,
-                        header.getContext()
+                        header.getContext(),
                       )}
                 </th>
               ))}
@@ -87,7 +87,7 @@ export const DataTableX = <T,>(props: TProps<T>) => {
                     index === row.getVisibleCells().length - 1
                       ? "pr-0 max-w-2"
                       : "",
-                    `max-w-[50px]`
+                    `max-w-[50px]`,
                   )}
                 >
                   {flexRender(cell.column.columnDef.cell, cell.getContext())}

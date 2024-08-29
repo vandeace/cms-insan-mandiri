@@ -14,7 +14,7 @@ export const columnsSuperAdmin = [
     header: () =>
       createColumn(
         "No",
-        "text-left text-[#202124] font-bold text-sm max-w-[10px]"
+        "text-left text-[#202124] font-bold text-sm max-w-[10px]",
       ),
     cell: (info) => <div className="py-1">{info.row.index + 1}</div>,
   }),

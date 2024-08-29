@@ -24,7 +24,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         }
       }
       return Promise.reject(error);
-    }
+    },
   );
   const queryClient = new QueryClient({
     defaultOptions: {

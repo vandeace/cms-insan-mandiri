@@ -5,5 +5,5 @@
  * @returns Column with wrapper
  */
 export const createColumn = (value: string, className: string) => {
-  return <div className={className}>{value}</div>
-}
+  return <div className={className}>{value}</div>;
+};
