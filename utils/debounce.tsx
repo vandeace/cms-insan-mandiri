@@ -11,7 +11,7 @@ type CallbackFunction = (...args: any[]) => void;
 const useDebounce = (
   cb: CallbackFunction,
   wait: number = 500,
-  deps: DependencyList = []
+  deps: DependencyList = [],
 ): void => {
   const timerRef = useRef<NodeJS.Timeout | null>(null);
 
