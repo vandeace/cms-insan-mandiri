@@ -4,15 +4,15 @@ import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
 import { CreateIcon } from "@/components/icons/create";
 import { useSession } from "next-auth/react";
-import { TTokenData } from "@/types/auth";
+import { TUserData } from "@/types/auth";
 interface TTitle {
   title: string;
   urlBtn?: string;
 }
 export default function Title({ title, urlBtn }: TTitle) {
   const session = useSession();
-  const user = session?.data?.user as unknown as TTokenData;
-
+  const user = session.data as unknown as TUserData;
+  console.log(session, "session");
   const router = useRouter();
   return (
     <div className="mb-3 flex items-center justify-between rounded-md bg-[#fff] p-4 drop-shadow-2xl">

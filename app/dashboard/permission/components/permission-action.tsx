@@ -2,7 +2,7 @@ import { useSession } from "next-auth/react";
 import React, { useState } from "react";
 import { FiEdit2, FiEye } from "react-icons/fi";
 
-import { TTokenData } from "@/types/auth";
+import { TUserData } from "@/types/auth";
 import { PermissionModalAction } from "./permission-modal";
 import { TPermission } from "@/types/permission";
 import { Button } from "@/components/ui/button";
@@ -19,7 +19,7 @@ export const PermissionAction = (props: PermissionActionProps) => {
     setModal(true);
   };
   const session = useSession();
-  const user = session?.data?.user as unknown as TTokenData;
+  const user = session.data as unknown as TUserData;
 
   return (
     <>

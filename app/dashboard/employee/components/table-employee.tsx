@@ -5,7 +5,7 @@ import { useSession } from "next-auth/react";
 import { columnsAdmin, columnsSuperAdmin } from "./column-header";
 import { PaginationState } from "@tanstack/react-table";
 import { useState } from "react";
-import { TTokenData } from "@/types/auth";
+import { TUserData } from "@/types/auth";
 import useMutableSearchParams from "@/hooks/param";
 import { useDebounce } from "use-debounce";
 import SkeletonTable from "@/components/skeleton-table";
@@ -14,7 +14,7 @@ import emptyImage from "@/public/images/no-data.webp";
 export default function TableEmployee() {
   const session = useSession();
 
-  const user = session?.data?.user as unknown as TTokenData;
+  const user = session.data as unknown as TUserData;
 
   const [pagination, setPagination] = useState<PaginationState>({
     pageIndex: 0,

@@ -11,21 +11,6 @@ import { redirect } from "next/navigation";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 export default function Layout({ children }: { children: React.ReactNode }) {
-  const { data, status } = useSession();
-
-  axiosInstance.interceptors.response.use(
-    (response) => response,
-    (error) => {
-      if (error.response.status === 401) {
-        if (status === "authenticated") {
-          localStorage.setItem("token", data.user.token);
-        } else {
-          redirect("api/auth/signin");
-        }
-      }
-      return Promise.reject(error);
-    },
-  );
   const queryClient = new QueryClient({
     defaultOptions: {
       queries: {

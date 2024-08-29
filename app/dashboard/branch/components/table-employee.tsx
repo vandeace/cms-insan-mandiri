@@ -4,7 +4,7 @@ import { useSession } from "next-auth/react";
 import { columnsAdmin, columnsSuperAdmin } from "./column-header";
 import { PaginationState } from "@tanstack/react-table";
 import { useState } from "react";
-import { TTokenData } from "@/types/auth";
+import { TUserData } from "@/types/auth";
 import useMutableSearchParams from "@/hooks/param";
 import { useDebounce } from "use-debounce";
 import { UseGetAllBranch } from "@/hooks/api/use-get-branch";
@@ -12,8 +12,8 @@ import { UseGetAllBranch } from "@/hooks/api/use-get-branch";
 export default function TableBranch() {
   const session = useSession();
 
-  const user = session?.data?.user as unknown as TTokenData;
-
+  const user = session.data as unknown as TUserData;
+  console.log(user, "user");
   const [pagination, setPagination] = useState<PaginationState>({
     pageIndex: 0,
     pageSize: 10,

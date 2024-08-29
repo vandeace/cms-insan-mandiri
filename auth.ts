@@ -8,11 +8,14 @@ async function getUser(
   password: string,
 ): Promise<User | undefined> {
   try {
-    const res = await fetch(`${process.env.BE_URL_PRODUCTION}api/auth/login`, {
-      method: "POST",
-      body: JSON.stringify({ email, password }),
-      headers: { "Content-Type": "application/json" },
-    });
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_BE_URL_PRODUCTION}/auth/login`,
+      {
+        method: "POST",
+        body: JSON.stringify({ email, password }),
+        headers: { "Content-Type": "application/json" },
+      },
+    );
 
     const user = await res.json();
     if (user.status == "OK") {

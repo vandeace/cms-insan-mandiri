@@ -1,31 +1,29 @@
 import { NextAuthConfig } from "next-auth";
 import { addDays, formatISO } from "date-fns";
-import { TToken, TTokenData } from "./types/auth";
-
+import { TUserToken } from "./types/auth";
 export const authConfig = {
   pages: {
     signIn: "/login",
   },
   callbacks: {
-    async jwt({ token, user, account }) {
+    jwt: async ({ token, user, account }) => {
       return { ...token, ...user, ...account };
     },
-    session: async ({ token, session }) => {
-      const data = token.data as unknown as TTokenData;
-      const tokenData = token.token as TToken;
+    session: async ({ token, session, user }) => {
+      const data = token as unknown as TUserToken;
       const today = new Date();
       const sessionEndDate = addDays(today, 6);
       const newSession = {
         ...session,
+        token: data.token.token,
         expires: formatISO(sessionEndDate),
-        authenticated: data.role !== ("USER" as unknown as string),
+        authenticated: data.data.role !== ("USER" as unknown as string),
         user: {
-          id: data.id,
-          email: data.email,
-          name: data.name,
-          image: data.photo,
-          role: data.role,
-          token: tokenData.token,
+          id: data.data.id,
+          email: data.data.email,
+          name: data.data.name,
+          image: data.data.photo,
+          role: data.data.role,
         },
       };
       return newSession;
