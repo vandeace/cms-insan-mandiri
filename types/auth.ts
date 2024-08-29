@@ -7,4 +7,9 @@ export type TTokenData = {
   role: string;
   photo: null | string;
   address: null | string;
+  token: string;
+};
+
+export type TToken = {
+  token: string;
 };
