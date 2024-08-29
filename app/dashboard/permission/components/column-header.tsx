@@ -22,7 +22,7 @@ export const columns = [
     header: () =>
       createColumn(
         "Tanggal Izin",
-        "text-left text-[#202124] font-bold text-sm"
+        "text-left text-[#202124] font-bold text-sm",
       ),
     cell: (info) => (
       <div className="text-sm">
@@ -38,7 +38,7 @@ export const columns = [
     header: () =>
       createColumn(
         "Nama Karyawan",
-        "text-left text-[#202124] font-bold text-sm"
+        "text-left text-[#202124] font-bold text-sm",
       ),
     cell: (info) => (
       <div className="text-sm">
@@ -69,7 +69,7 @@ export const columns = [
             "py-1 font-black",
             info.row.original.status === "APPROVED" && "text-[#22C55E]",
             info.row.original.status === "PENDING" && "text-[#DEB841]",
-            info.row.original.status === "REJECTED" && "text-secondary-red"
+            info.row.original.status === "REJECTED" && "text-secondary-red",
           )}
         >
           {info.row.original.status}
@@ -83,7 +83,7 @@ export const columns = [
     header: () =>
       createColumn(
         "Action",
-        "text-center text-[#202124] font-bold text-sm max-w-[150px]"
+        "text-center text-[#202124] font-bold text-sm max-w-[150px]",
       ),
     maxSize: 10,
     cell: (info) => {

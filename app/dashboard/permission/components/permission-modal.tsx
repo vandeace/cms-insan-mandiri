@@ -47,7 +47,7 @@ export const PermissionModalAction: React.FC<PermissionModalActionProps> = ({
         <span
           className={twMerge(
             "p-2 text-sm font-normal text-[#202124]",
-            valueClassName
+            valueClassName,
           )}
         >
           {value}
@@ -100,13 +100,13 @@ export const PermissionModalAction: React.FC<PermissionModalActionProps> = ({
             {renderRow("Jenis Perizinan", permissionData.permissionType.name)}
             {renderRow(
               "Tanggal Izin",
-              format(new Date(permissionData.startTime), "dd-MM-yyyy")
+              format(new Date(permissionData.startTime), "dd-MM-yyyy"),
             )}
             {renderRow("Keterangan", permissionData.notes)}
             {renderRow(
               "Status Izin",
               permissionData.status,
-              `${getStatusColor()} font-black`
+              `${getStatusColor()} font-black`,
             )}
             {permissionData.status === "APPROVED" &&
               renderRow("Disetujui Oleh", permissionData.approvedBy.name)}
@@ -138,7 +138,7 @@ export const PermissionModalAction: React.FC<PermissionModalActionProps> = ({
                           position: "top-center",
                         });
                       },
-                    }
+                    },
                   )
                 }
               >
@@ -169,7 +169,7 @@ export const PermissionModalAction: React.FC<PermissionModalActionProps> = ({
                           position: "top-center",
                         });
                       },
-                    }
+                    },
                   )
                 }
               >
