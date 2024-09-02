@@ -13,7 +13,6 @@ export default function TableBranch() {
   const session = useSession();
 
   const user = session.data as unknown as TUserData;
-  console.log(user, "user");
   const [pagination, setPagination] = useState<PaginationState>({
     pageIndex: 0,
     pageSize: 10,
