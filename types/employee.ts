@@ -22,9 +22,9 @@ export type TEmployeeCreateForm = {
   name: string;
   email: string;
   password: string;
-  positionId: { label: string; value: string };
-  branchId: { label: string; value: string };
-  role: { label: string; value: string };
+  positionId: string;
+  branchId: string;
+  role: string;
   address: string;
   phoneNumber: string;
 };
@@ -39,7 +39,7 @@ export type TEmployeeFilter = {
 };
 
 export type TEmployeeFormProps = {
-  dataEmployee?: TEmployee;
+  dataEmployee?: TEmployee | undefined;
 };
 
 export type TEmployeeUpdateProps = {
@@ -57,30 +57,18 @@ export const TEmployeeScheme = z.object({
     .string()
     .min(1, { message: "Email tidak boleh kosong." })
     .email("This is not a valid email."),
-  positionId: z.object(
-    { value: z.string(), label: z.string() },
-    {
-      required_error: "Jabatan harus diisi",
-    },
-  ),
-  branchId: z.object(
-    { value: z.string(), label: z.string() },
-    {
-      required_error: "Kantor harus diisi",
-    },
-  ),
-  role: z.object(
-    { value: z.string(), label: z.string() },
-    {
-      required_error: "Role harus diisi",
-    },
-  ),
-  phoneNumber: z
-    .number({
-      required_error: "NO HP tidak boleh kosong",
-      invalid_type_error: "NO HP Harus berupa angka",
-    })
-    .min(10, "NO HP tidak boleh kurang dari 10 character"),
+  positionId: z.string({
+    required_error: "Jabatan harus diisi",
+  }),
+  branchId: z.string({
+    required_error: "Kantor harus diisi",
+  }),
+  role: z.string({
+    required_error: "Role harus diisi",
+  }),
+  phoneNumber: z.string({
+    required_error: "NO HP tidak boleh kosong",
+  }),
   password: z.string().optional(),
   address: z.string().optional().nullish(),
 });

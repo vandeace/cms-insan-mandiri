@@ -19,7 +19,7 @@ export const PermissionAction = (props: PermissionActionProps) => {
     setModal(true);
   };
   const session = useSession();
-  const user = session.data as unknown as TUserData;
+  const user = session.data?.user as unknown as TUserData;
 
   return (
     <>

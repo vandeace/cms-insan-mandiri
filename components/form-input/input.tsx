@@ -16,6 +16,7 @@ interface TInputForm extends InputHTMLAttributes<HTMLInputElement> {
   name: string;
   description?: string;
   type?: string;
+  placeholder?: string;
 }
 export default function InputForm({
   label,
@@ -23,6 +24,7 @@ export default function InputForm({
   name,
   description,
   type = "text",
+  placeholder,
 }: TInputForm) {
   return (
     <FormField
@@ -32,7 +34,7 @@ export default function InputForm({
         <FormItem>
           {label && <FormLabel>{label}</FormLabel>}
           <FormControl>
-            <Input {...field} type={type} />
+            <Input {...field} type={type} placeholder={placeholder} />
           </FormControl>
           {description && <FormDescription>{description}</FormDescription>}
           <FormMessage />

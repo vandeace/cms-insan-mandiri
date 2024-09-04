@@ -18,8 +18,8 @@ export const OvertimeAction = (props: OvertimeActionProps) => {
     setModal(true);
   };
 
-  const { data } = useSession();
-  const user = data as unknown as TUserData;
+  const session = useSession();
+  const user = session.data?.user as unknown as TUserData;
 
   return (
     <>

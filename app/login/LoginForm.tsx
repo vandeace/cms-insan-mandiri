@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
 import * as z from "zod";
 import { useForm } from "react-hook-form";
-import InputForm from "@/components/input-form";
+import InputForm from "@/components/form-input/input";
 
 export default function LoginForm() {
   const [isError, setIsError] = useState(false);

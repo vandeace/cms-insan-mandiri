@@ -12,7 +12,7 @@ import { UseGetAllBranch } from "@/hooks/api/use-get-branch";
 export default function TableBranch() {
   const session = useSession();
 
-  const user = session.data as unknown as TUserData;
+  const user = session.data?.user as unknown as TUserData;
   const [pagination, setPagination] = useState<PaginationState>({
     pageIndex: 0,
     pageSize: 10,

@@ -11,7 +11,7 @@ interface TTitle {
 }
 export default function Title({ title, urlBtn }: TTitle) {
   const session = useSession();
-  const user = session.data as unknown as TUserData;
+  const user = session.data?.user as unknown as TUserData;
   const router = useRouter();
   return (
     <div className="mb-3 flex items-center justify-between rounded-md bg-[#fff] p-4 drop-shadow-2xl">

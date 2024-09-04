@@ -14,7 +14,7 @@ import emptyImage from "@/public/images/no-data.webp";
 export default function TableEmployee() {
   const session = useSession();
 
-  const user = session.data as unknown as TUserData;
+  const user = session.data?.user as unknown as TUserData;
 
   const [pagination, setPagination] = useState<PaginationState>({
     pageIndex: 0,
@@ -37,6 +37,8 @@ export default function TableEmployee() {
   if (isFetching) {
     return <SkeletonTable />;
   }
+
+  console.log(user, "user");
 
   return (
     <div className="overflow-y-auto w-full">
