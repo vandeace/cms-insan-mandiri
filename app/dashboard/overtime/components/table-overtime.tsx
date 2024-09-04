@@ -4,7 +4,7 @@ import { columns } from "./column-header";
 import { PaginationState } from "@tanstack/react-table";
 import { useState } from "react";
 import useMutableSearchParams from "@/hooks/param";
-import SkeletonTable from "@/components/skeleton-table";
+import SkeletonTable from "@/components/skeleton-state/skeleton-table";
 import Image from "next/image";
 import emptyImage from "@/public/images/no-data.webp";
 import { useGetOvertime } from "@/hooks/api/use-get-overtime";

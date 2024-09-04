@@ -8,7 +8,7 @@ import { useState } from "react";
 import { TUserData } from "@/types/auth";
 import useMutableSearchParams from "@/hooks/param";
 import { useDebounce } from "use-debounce";
-import SkeletonTable from "@/components/skeleton-table";
+import SkeletonTable from "@/components/skeleton-state/skeleton-table";
 import Image from "next/image";
 import emptyImage from "@/public/images/no-data.webp";
 export default function TableEmployee() {

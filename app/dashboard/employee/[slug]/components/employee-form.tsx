@@ -79,7 +79,7 @@ const EmployeeForm: React.FC<TEmployeeFormProps> = ({ dataEmployee }) => {
         {
           onSuccess: onSuccessHandle,
           onError: onErrorHandle,
-        },
+        }
       );
     } else {
       mutate(data, {

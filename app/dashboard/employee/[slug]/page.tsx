@@ -13,7 +13,9 @@ export default function DetailEmployeePage({ params }: { params: Params }) {
   return (
     <div className="flex w-full flex-col">
       <Title title="Detail Karyawan" />
-      <EmployeeWrapper slug={slug} />
+      <section className="flex w-full flex-col gap-y-3 rounded-md border border-alice-blue bg-[#fff] p-4 drop-shadow-2xl">
+        <EmployeeWrapper slug={slug} />
+      </section>
     </div>
   );
 }
