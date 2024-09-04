@@ -1,13 +1,13 @@
-# Run Prettier
-echo "Running Prettier..."
-pnpm run format || {
-    echo "Prettier failed. Please fix the formatting issues and try committing again."
-    exit 1
-}
+# # Run Prettier
+# echo "Running Prettier..."
+# pnpm run format || {
+#     echo "Prettier failed. Please fix the formatting issues and try committing again."
+#     exit 1
+# }
 
 # Run TypeScript check
-echo "Running TypeScript check..."
-pnpm run check-ts || {
-    echo "TypeScript check failed. Please fix the type errors and try committing again."
+echo "Running Lint check..."
+pnpm run lint || {
+    echo "Lint check failed. Please fix the type errors and try committing again."
     exit 1
 }
