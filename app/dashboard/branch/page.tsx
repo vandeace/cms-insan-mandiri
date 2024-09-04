@@ -9,7 +9,7 @@ function Page() {
       <Title urlBtn="/dashboard/branch/add" title="Data Kantor" />
       <section className="flex w-full flex-col gap-y-3 rounded-md border border-alice-blue bg-[#fff] p-4 drop-shadow-2xl">
         <TableFilter />
-        <Suspense fallback={<p>Loading feed...</p>}>
+        <Suspense fallback={<p>Loading feeds...</p>}>
           <TableBranch />
         </Suspense>
       </section>
