@@ -17,7 +17,7 @@ export const useUpdateEmployee = () => {
 
       const { data } = await axiosInstance.patch(
         `/users/${formData.id}`,
-        requestData
+        requestData,
       );
 
       return data;
