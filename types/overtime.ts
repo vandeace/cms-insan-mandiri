@@ -4,7 +4,7 @@ export type TOvertime = {
   startTime: string;
   endTime: string;
   notes: string;
-  status: 'PENDING' | 'APPROVED' | 'REJECTED';
+  status: "PENDING" | "APPROVED" | "REJECTED";
   approvedById: null | string;
   approvedBy: null | {
     name: string;
@@ -22,5 +22,5 @@ export type TOvertimeFilter = {
 
 export type TOvertimeAction = {
   id: string;
-  action: 'approve' | 'reject';
+  action: "approve" | "reject";
 };

@@ -3,7 +3,7 @@ import {
   ComponentPropsWithRef,
   ElementType,
   PropsWithChildren,
-} from 'react';
+} from "react";
 
 /**
  * Valid html element to pass
@@ -29,7 +29,7 @@ export type TPolymorphicComponentProp<
 /**
  * Get element type from generic for ref
  */
-export type TPolymorphicRef<C extends ElementType> = ComponentPropsWithRef<C>['ref'];
+export type TPolymorphicRef<C extends ElementType> = ComponentPropsWithRef<C>["ref"];
 
 /**
  * Polymorphic component with ref (forwardRef)

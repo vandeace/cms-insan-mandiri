@@ -1,6 +1,6 @@
-import { ArrowIcon } from '../icons/arrow';
-import { ArrowCollapseIcon } from '../icons/arrow-collapse';
-import { TProps } from './type';
+import { ArrowIcon } from "../icons/arrow";
+import { ArrowCollapseIcon } from "../icons/arrow-collapse";
+import { TProps } from "./type";
 
 export const Pagination = <T,>(props: TProps<T>) => {
   const { table, totalData } = props;

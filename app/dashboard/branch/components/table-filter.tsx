@@ -1,6 +1,6 @@
-'use client';
-import FilterSearch from '@/components/filter/search';
-import React from 'react';
+"use client";
+import FilterSearch from "@/components/filter/search";
+import React from "react";
 
 export default function TableFilter() {
   return (

@@ -1,25 +1,25 @@
-'use client';
+"use client";
 
-import { TLogin, TLoginScheme } from '@/types/login';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { useState } from 'react';
-import { authenticate } from '@/app/api/lib/action';
-import { Button } from '@/components/ui/button';
-import { Form } from '@/components/ui/form';
-import * as z from 'zod';
-import { useForm } from 'react-hook-form';
-import InputForm from '@/components/form-input/input';
+import { TLogin, TLoginScheme } from "@/types/login";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useState } from "react";
+import { authenticate } from "@/app/api/lib/action";
+import { Button } from "@/components/ui/button";
+import { Form } from "@/components/ui/form";
+import * as z from "zod";
+import { useForm } from "react-hook-form";
+import InputForm from "@/components/form-input/input";
 
 export default function LoginForm() {
   const [isError, setIsError] = useState(false);
 
   const form = useForm<TLogin>({
-    reValidateMode: 'onChange',
-    mode: 'onChange',
+    reValidateMode: "onChange",
+    mode: "onChange",
     resolver: zodResolver(TLoginScheme),
     defaultValues: {
-      email: '',
-      password: '',
+      email: "",
+      password: "",
     },
   });
 

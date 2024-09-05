@@ -1,6 +1,6 @@
-import { TEmployeeEditForm } from '@/types/employee';
-import { useMutation } from '@tanstack/react-query';
-import axiosInstance from '@/config/api';
+import { TEmployeeEditForm } from "@/types/employee";
+import { useMutation } from "@tanstack/react-query";
+import axiosInstance from "@/config/api";
 
 export const useUpdateEmployee = () => {
   return useMutation({
@@ -9,7 +9,7 @@ export const useUpdateEmployee = () => {
         nik: formData.nik,
         name: formData.name,
         email: formData.email,
-        password: formData.password !== '' ? formData.password : undefined,
+        password: formData.password !== "" ? formData.password : undefined,
         positionId: formData.positionId,
         branchId: formData.branchId,
         phoneNumber: formData.phoneNumber.toString(),

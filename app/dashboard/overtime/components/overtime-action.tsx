@@ -1,13 +1,13 @@
-import { Button } from '@/components/ui/button';
-import { TOvertime } from '@/types/overtime';
-import { useSession } from 'next-auth/react';
-import React, { useState } from 'react';
-import { FiEdit2, FiEye } from 'react-icons/fi';
-import { OvertimeModalAction } from './overtime-modal';
-import { TUserData } from '@/types/auth';
+import { Button } from "@/components/ui/button";
+import { TOvertime } from "@/types/overtime";
+import { useSession } from "next-auth/react";
+import React, { useState } from "react";
+import { FiEdit2, FiEye } from "react-icons/fi";
+import { OvertimeModalAction } from "./overtime-modal";
+import { TUserData } from "@/types/auth";
 
 interface OvertimeActionProps {
-  tipe: 'approve' | 'detail';
+  tipe: "approve" | "detail";
   overtimeData: TOvertime;
 }
 
@@ -32,7 +32,7 @@ export const OvertimeAction = (props: OvertimeActionProps) => {
       )}
 
       <Button onClick={() => onClick()} variant="default">
-        {props.tipe === 'approve' && user.role === 'SUPER_ADMIN' ? (
+        {props.tipe === "approve" && user.role === "SUPER_ADMIN" ? (
           <>
             <FiEdit2 className="mr-2" /> <span>Approve</span>
           </>

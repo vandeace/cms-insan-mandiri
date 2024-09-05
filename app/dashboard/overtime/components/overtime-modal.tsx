@@ -1,26 +1,26 @@
-import { Button } from '@/components/ui/button';
-import { useUpdateOvertime } from '@/hooks/api/use-update-overtime';
-import { TOvertime } from '@/types/overtime';
-import { TPermissionAction } from '@/types/permission';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { differenceInHours, format } from 'date-fns';
-import { AiOutlineClose } from 'react-icons/ai';
-import Modal from 'react-modal';
-import { toast } from 'react-toastify';
-import { twMerge } from 'tailwind-merge';
+import { Button } from "@/components/ui/button";
+import { useUpdateOvertime } from "@/hooks/api/use-update-overtime";
+import { TOvertime } from "@/types/overtime";
+import { TPermissionAction } from "@/types/permission";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { differenceInHours, format } from "date-fns";
+import { AiOutlineClose } from "react-icons/ai";
+import Modal from "react-modal";
+import { toast } from "react-toastify";
+import { twMerge } from "tailwind-merge";
 
 const customStyles = {
   overlay: {
     zIndex: 1000,
-    backgroundColor: 'rgba(0,0,0,0.3)',
+    backgroundColor: "rgba(0,0,0,0.3)",
   },
   content: {
-    top: '50%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    marginRight: '-50%',
-    transform: 'translate(-50%, -50%)',
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)",
   },
 };
 
@@ -51,25 +51,25 @@ export const OvertimeModalAction: React.FC<OvertimeModalActionProps> = ({
         <div className="flex min-w-[150px] justify-between p-2">
           <span>{label}</span> <span>:</span>
         </div>
-        <span className={twMerge('p-2 text-sm font-normal text-[#202124]', valueClassName)}>
+        <span className={twMerge("p-2 text-sm font-normal text-[#202124]", valueClassName)}>
           {value}
         </span>
       </div>
     );
   };
   const getStatusColor = () => {
-    let colorClass = '';
+    let colorClass = "";
     switch (overtimeData.status) {
-      case 'APPROVED': {
-        colorClass = 'text-[#22C55E]';
+      case "APPROVED": {
+        colorClass = "text-[#22C55E]";
         break;
       }
-      case 'PENDING': {
-        colorClass = 'text-[#DEB841]';
+      case "PENDING": {
+        colorClass = "text-[#DEB841]";
         break;
       }
-      case 'REJECTED': {
-        colorClass = 'text-secondary-red';
+      case "REJECTED": {
+        colorClass = "text-secondary-red";
         break;
       }
       default: {
@@ -96,23 +96,23 @@ export const OvertimeModalAction: React.FC<OvertimeModalActionProps> = ({
           </div>
           <h2 className="text-lg font-black text-secondary-blue">DETAIL LEMBURAN</h2>
           <div className="flex flex-col gap-3 border border-columbia-blue p-4">
-            {renderRow('Nama Karyawan', overtimeData.user.name)}
-            {renderRow('Tanggal Lembur', format(new Date(overtimeData.startTime), 'dd-MM-yyyy'))}
+            {renderRow("Nama Karyawan", overtimeData.user.name)}
+            {renderRow("Tanggal Lembur", format(new Date(overtimeData.startTime), "dd-MM-yyyy"))}
             {renderRow(
-              'Total Jam',
+              "Total Jam",
 
               `${getDifferenceInHours(
                 overtimeData.startTime as string,
                 overtimeData.endTime as string,
               )}`,
             )}
-            {renderRow('Keterangan', overtimeData.notes)}
-            {renderRow('Status', overtimeData.status, `${getStatusColor()} font-black`)}
-            {overtimeData.status === 'APPROVED' &&
+            {renderRow("Keterangan", overtimeData.notes)}
+            {renderRow("Status", overtimeData.status, `${getStatusColor()} font-black`)}
+            {overtimeData.status === "APPROVED" &&
               overtimeData.approvedBy?.name &&
-              renderRow('Disetujui Oleh', overtimeData.approvedBy.name)}
+              renderRow("Disetujui Oleh", overtimeData.approvedBy.name)}
           </div>
-          {overtimeData.status === 'PENDING' && (
+          {overtimeData.status === "PENDING" && (
             <div className="flex items-center justify-center gap-x-3">
               <Button
                 variant="destructive"
@@ -120,21 +120,21 @@ export const OvertimeModalAction: React.FC<OvertimeModalActionProps> = ({
                   mutate(
                     {
                       id: overtimeData.id,
-                      action: 'reject',
+                      action: "reject",
                     },
                     {
                       onSuccess() {
                         closeModal();
                         toast.success(`Berhasil Menolak Lemburan`, {
-                          position: 'top-center',
+                          position: "top-center",
                         });
                         queryClient.invalidateQueries({
-                          queryKey: ['overtime'],
+                          queryKey: ["overtime"],
                         });
                       },
                       onError: () => {
-                        toast.error('Gagal Menolak Lemburan', {
-                          position: 'top-center',
+                        toast.error("Gagal Menolak Lemburan", {
+                          position: "top-center",
                         });
                       },
                     },
@@ -149,21 +149,21 @@ export const OvertimeModalAction: React.FC<OvertimeModalActionProps> = ({
                   mutate(
                     {
                       id: overtimeData.id,
-                      action: 'approve',
+                      action: "approve",
                     },
                     {
                       onSuccess() {
                         closeModal();
                         toast.success(`Berhasil Setujui Lemburan`, {
-                          position: 'top-center',
+                          position: "top-center",
                         });
                         queryClient.invalidateQueries({
-                          queryKey: ['overtime'],
+                          queryKey: ["overtime"],
                         });
                       },
                       onError: () => {
-                        toast.error('Gagal Menyetujui Lemburan', {
-                          position: 'top-center',
+                        toast.error("Gagal Menyetujui Lemburan", {
+                          position: "top-center",
                         });
                       },
                     },

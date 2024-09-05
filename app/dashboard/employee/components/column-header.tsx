@@ -1,23 +1,23 @@
-import { Button } from '@/components/ui/button';
-import { TEmployee } from '@/types/employee';
-import { createColumn } from '@/utils/table';
-import { createColumnHelper } from '@tanstack/react-table';
-import Link from 'next/link';
-import { FaEdit } from 'react-icons/fa';
+import { Button } from "@/components/ui/button";
+import { TEmployee } from "@/types/employee";
+import { createColumn } from "@/utils/table";
+import { createColumnHelper } from "@tanstack/react-table";
+import Link from "next/link";
+import { FaEdit } from "react-icons/fa";
 
 export const columnHelper = createColumnHelper<TEmployee>();
 
 export const columnsSuperAdmin = [
   columnHelper.display({
-    id: 'No',
+    id: "No",
     size: 5,
-    header: () => createColumn('No', 'text-left text-[#202124] font-bold text-sm max-w-[10px]'),
+    header: () => createColumn("No", "text-left text-[#202124] font-bold text-sm max-w-[10px]"),
     cell: info => <div className="py-1">{info.row.index + 1}</div>,
   }),
   columnHelper.display({
-    id: 'Nama',
+    id: "Nama",
     size: 80,
-    header: () => createColumn('Nama', 'text-left text-[#202124] font-bold text-sm'),
+    header: () => createColumn("Nama", "text-left text-[#202124] font-bold text-sm"),
     cell: info => (
       <div className="text-sm">
         <p className="py-1">{info.row.original.name}</p>
@@ -25,9 +25,9 @@ export const columnsSuperAdmin = [
     ),
   }),
   columnHelper.display({
-    id: 'nik',
+    id: "nik",
     size: 40,
-    header: () => createColumn('NIK', 'text-left text-[#202124] font-bold text-sm'),
+    header: () => createColumn("NIK", "text-left text-[#202124] font-bold text-sm"),
     cell: info => (
       <div className="text-sm">
         <p className="py-1">{info.row.original.nik}</p>
@@ -35,9 +35,9 @@ export const columnsSuperAdmin = [
     ),
   }),
   columnHelper.display({
-    id: 'telephone_number',
+    id: "telephone_number",
     size: 80,
-    header: () => createColumn('No Telepon', 'text-left text-[#202124] font-bold text-sm'),
+    header: () => createColumn("No Telepon", "text-left text-[#202124] font-bold text-sm"),
     cell: info => (
       <div className="text-sm">
         <p className="py-1">{info.row.original.phoneNumber}</p>
@@ -45,9 +45,9 @@ export const columnsSuperAdmin = [
     ),
   }),
   columnHelper.display({
-    id: 'branch',
+    id: "branch",
     size: 80,
-    header: () => createColumn('Kantor', 'text-left text-[#202124] font-bold text-sm'),
+    header: () => createColumn("Kantor", "text-left text-[#202124] font-bold text-sm"),
     cell: info => (
       <div className="text-sm">
         <p className="py-1">{info.row.original.branch.name}</p>
@@ -55,9 +55,9 @@ export const columnsSuperAdmin = [
     ),
   }),
   columnHelper.display({
-    id: 'jabatan',
+    id: "jabatan",
     size: 80,
-    header: () => createColumn('Jabatan', 'text-left text-[#202124] font-bold text-sm'),
+    header: () => createColumn("Jabatan", "text-left text-[#202124] font-bold text-sm"),
     cell: info => (
       <div className="text-sm">
         <p className="py-1">{info.row.original?.position?.name}</p>
@@ -65,9 +65,9 @@ export const columnsSuperAdmin = [
     ),
   }),
   columnHelper.display({
-    id: 'action',
+    id: "action",
     size: 80,
-    header: () => createColumn('Action', 'text-center text-[#202124] font-bold text-sm'),
+    header: () => createColumn("Action", "text-center text-[#202124] font-bold text-sm"),
     cell: info => (
       <div className="flex items-center justify-center">
         <Link href={`/dashboard/employee/${info.row.original.id}`}>
@@ -83,15 +83,15 @@ export const columnsSuperAdmin = [
 
 export const columnsAdmin = [
   columnHelper.display({
-    id: 'No',
+    id: "No",
     size: 30,
-    header: () => createColumn('No', 'text-left text-[#202124] font-bold text-sm'),
+    header: () => createColumn("No", "text-left text-[#202124] font-bold text-sm"),
     cell: info => <div className="py-1">{info.row.index + 1}</div>,
   }),
   columnHelper.display({
-    id: 'Nama',
+    id: "Nama",
     size: 80,
-    header: () => createColumn('Nama', 'text-left text-[#202124] font-bold text-sm'),
+    header: () => createColumn("Nama", "text-left text-[#202124] font-bold text-sm"),
     cell: info => (
       <div className="text-sm">
         <p className="py-1">{info.row.original.name}</p>
@@ -99,9 +99,9 @@ export const columnsAdmin = [
     ),
   }),
   columnHelper.display({
-    id: 'nik',
+    id: "nik",
     size: 40,
-    header: () => createColumn('NIK', 'text-left text-[#202124] font-bold text-sm'),
+    header: () => createColumn("NIK", "text-left text-[#202124] font-bold text-sm"),
     cell: info => (
       <div className="text-sm">
         <p className="py-1">{info.row.original.nik}</p>
@@ -109,9 +109,9 @@ export const columnsAdmin = [
     ),
   }),
   columnHelper.display({
-    id: 'telephone_number',
+    id: "telephone_number",
     size: 80,
-    header: () => createColumn('No Telepon', 'text-left text-[#202124] font-bold text-sm'),
+    header: () => createColumn("No Telepon", "text-left text-[#202124] font-bold text-sm"),
     cell: info => (
       <div className="text-sm">
         <p className="py-1">{info.row.original.phoneNumber}</p>
@@ -119,9 +119,9 @@ export const columnsAdmin = [
     ),
   }),
   columnHelper.display({
-    id: 'branch',
+    id: "branch",
     size: 80,
-    header: () => createColumn('Kantor', 'text-left text-[#202124] font-bold text-sm'),
+    header: () => createColumn("Kantor", "text-left text-[#202124] font-bold text-sm"),
     cell: info => (
       <div className="text-sm">
         <p className="py-1">{info.row.original.branch.name}</p>
@@ -129,9 +129,9 @@ export const columnsAdmin = [
     ),
   }),
   columnHelper.display({
-    id: 'jabatan',
+    id: "jabatan",
     size: 80,
-    header: () => createColumn('Jabatan', 'text-left text-[#202124] font-bold text-sm'),
+    header: () => createColumn("Jabatan", "text-left text-[#202124] font-bold text-sm"),
     cell: info => (
       <div className="text-sm">
         <p className="py-1">{info.row.original?.position?.name}</p>

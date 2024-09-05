@@ -1,5 +1,5 @@
-import React from 'react';
-import './SkeletonTable.css';
+import React from "react";
+import "./SkeletonTable.css";
 
 const SkeletonTable = () => {
   const rows = Array.from({ length: 5 }); // Adjust the number of rows as needed

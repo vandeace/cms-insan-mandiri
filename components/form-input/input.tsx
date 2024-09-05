@@ -6,9 +6,9 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '@/components/ui/form';
-import { Input } from '@/components/ui/input';
-import { InputHTMLAttributes } from 'react';
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { InputHTMLAttributes } from "react";
 
 interface TInputForm extends InputHTMLAttributes<HTMLInputElement> {
   label?: string;
@@ -23,7 +23,7 @@ export default function InputForm({
   control,
   name,
   description,
-  type = 'text',
+  type = "text",
   placeholder,
 }: TInputForm) {
   return (

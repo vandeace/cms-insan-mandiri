@@ -1,31 +1,31 @@
-'use client';
+"use client";
 
-import InputForm from '@/components/form-input/input';
-import InputSelectForm from '@/components/form-input/select';
-import TextAreaForm from '@/components/form-input/text-area';
-import { Button } from '@/components/ui/button';
-import { useCreateEmployee } from '@/hooks/api/use-create-employee';
-import { getFormattedBranch } from '@/hooks/api/use-get-branch';
-import { getFormattedPosition } from '@/hooks/api/use-get-position';
-import { useUpdateEmployee } from '@/hooks/api/use-update-employee';
-import { TEmployeeCreateForm, TEmployeeScheme, TEmployeeFormProps } from '@/types/employee';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { useRouter } from 'next/navigation';
-import { FormProvider, useForm } from 'react-hook-form';
-import { toast } from 'react-toastify';
+import InputForm from "@/components/form-input/input";
+import InputSelectForm from "@/components/form-input/select";
+import TextAreaForm from "@/components/form-input/text-area";
+import { Button } from "@/components/ui/button";
+import { useCreateEmployee } from "@/hooks/api/use-create-employee";
+import { getFormattedBranch } from "@/hooks/api/use-get-branch";
+import { getFormattedPosition } from "@/hooks/api/use-get-position";
+import { useUpdateEmployee } from "@/hooks/api/use-update-employee";
+import { TEmployeeCreateForm, TEmployeeScheme, TEmployeeFormProps } from "@/types/employee";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useRouter } from "next/navigation";
+import { FormProvider, useForm } from "react-hook-form";
+import { toast } from "react-toastify";
 
 export const roleOption = [
   {
-    value: 'USER',
-    label: 'User',
+    value: "USER",
+    label: "User",
   },
   {
-    value: 'ADMIN',
-    label: 'Admin',
+    value: "ADMIN",
+    label: "Admin",
   },
   {
-    value: 'SUPER_ADMIN',
-    label: 'Super Admin',
+    value: "SUPER_ADMIN",
+    label: "Super Admin",
   },
 ];
 
@@ -45,8 +45,8 @@ const EmployeeForm: React.FC<TEmployeeFormProps> = ({ dataEmployee }) => {
       branchId: dataEmployee?.branch.id,
       role: dataEmployee?.role,
     },
-    reValidateMode: 'onChange',
-    mode: 'onChange',
+    reValidateMode: "onChange",
+    mode: "onChange",
     resolver: zodResolver(TEmployeeScheme),
   });
 
@@ -57,14 +57,14 @@ const EmployeeForm: React.FC<TEmployeeFormProps> = ({ dataEmployee }) => {
 
   const onSuccessHandle = () => {
     reset();
-    router.push('/dashboard/employee');
-    toast.success(`Success ${!!dataEmployee ? 'Update' : 'Create'} Data`, {
-      position: 'top-center',
+    router.push("/dashboard/employee");
+    toast.success(`Success ${!!dataEmployee ? "Update" : "Create"} Data`, {
+      position: "top-center",
     });
   };
   const onErrorHandle = () => {
-    toast.error(`Fail ${!!dataEmployee ? 'Update' : 'Create'} Data`, {
-      position: 'top-center',
+    toast.error(`Fail ${!!dataEmployee ? "Update" : "Create"} Data`, {
+      position: "top-center",
     });
   };
 

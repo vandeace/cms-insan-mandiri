@@ -1,4 +1,4 @@
-import { z } from 'zod';
+import { z } from "zod";
 
 export type TBranch = {
   id: string;
@@ -13,15 +13,15 @@ export type TBranch = {
 };
 
 export const TBranchScheme = z.object({
-  name: z.string().min(1, 'Nama Tidak Boleh Kosong'),
-  address: z.string().min(1, 'Alamat Tidak Boleh Kosong'),
+  name: z.string().min(1, "Nama Tidak Boleh Kosong"),
+  address: z.string().min(1, "Alamat Tidak Boleh Kosong"),
   lat: z.number({
-    required_error: 'Latitude tidak boleh kosong',
-    invalid_type_error: 'Latitude harus berupa angka',
+    required_error: "Latitude tidak boleh kosong",
+    invalid_type_error: "Latitude harus berupa angka",
   }),
   long: z.number({
-    required_error: 'Latitude tidak boleh kosong',
-    invalid_type_error: 'Latitude harus berupa angka',
+    required_error: "Latitude tidak boleh kosong",
+    invalid_type_error: "Latitude harus berupa angka",
   }),
 });
 

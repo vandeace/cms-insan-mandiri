@@ -1,4 +1,4 @@
-import { Table } from '@tanstack/react-table';
+import { Table } from "@tanstack/react-table";
 
 export type TProps<T> = {
   table: Table<T>;

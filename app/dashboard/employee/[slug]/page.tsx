@@ -1,7 +1,7 @@
-import Title from '@/components/Title/page-title';
-import { Suspense } from 'react';
-import EmployeeForm from './components/employee-form';
-import EmployeeWrapper from './components/employee-wrapper';
+import Title from "@/components/Title/page-title";
+import { Suspense } from "react";
+import EmployeeForm from "./components/employee-form";
+import EmployeeWrapper from "./components/employee-wrapper";
 
 interface Params {
   slug: string;

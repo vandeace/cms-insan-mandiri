@@ -1,4 +1,4 @@
-import { UseMutationResult } from '@tanstack/react-query';
+import { UseMutationResult } from "@tanstack/react-query";
 
 export type TResponse<T> = {
   data: T[];

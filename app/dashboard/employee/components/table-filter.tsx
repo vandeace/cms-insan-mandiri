@@ -1,7 +1,7 @@
-'use client';
-import BranchFilter from '@/components/filter/branch';
-import EmployeeSearch from '@/components/filter/search';
-import PositionFilter from '@/components/filter/position';
+"use client";
+import BranchFilter from "@/components/filter/branch";
+import EmployeeSearch from "@/components/filter/search";
+import PositionFilter from "@/components/filter/position";
 
 export default function TableFilter() {
   return (

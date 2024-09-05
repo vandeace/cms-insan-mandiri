@@ -1,6 +1,6 @@
-import axiosInstance from '@/config/api';
-import { TPermissionAction } from '@/types/permission';
-import { useMutation } from '@tanstack/react-query';
+import axiosInstance from "@/config/api";
+import { TPermissionAction } from "@/types/permission";
+import { useMutation } from "@tanstack/react-query";
 
 export const useUpdateOvertime = () => {
   return useMutation({

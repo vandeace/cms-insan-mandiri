@@ -6,10 +6,10 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '@/components/ui/form';
-import { Input } from '@/components/ui/input';
-import { InputHTMLAttributes } from 'react';
-import { Textarea } from '../ui/textarea';
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { InputHTMLAttributes } from "react";
+import { Textarea } from "../ui/textarea";
 
 interface TTextAreaForm extends InputHTMLAttributes<HTMLInputElement> {
   label?: string;

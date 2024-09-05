@@ -1,16 +1,16 @@
-'use client';
-import { DataTableX } from '@/components/datatable';
-import { useGetEmployee } from '@/hooks/api/use-get-employee';
-import { useSession } from 'next-auth/react';
-import { columnsAdmin, columnsSuperAdmin } from './column-header';
-import { PaginationState } from '@tanstack/react-table';
-import { useState } from 'react';
-import { TUserData } from '@/types/auth';
-import useMutableSearchParams from '@/hooks/param';
-import { useDebounce } from 'use-debounce';
-import SkeletonTable from '@/components/skeleton-state/skeleton-table';
-import Image from 'next/image';
-import emptyImage from '@/public/images/no-data.webp';
+"use client";
+import { DataTableX } from "@/components/datatable";
+import { useGetEmployee } from "@/hooks/api/use-get-employee";
+import { useSession } from "next-auth/react";
+import { columnsAdmin, columnsSuperAdmin } from "./column-header";
+import { PaginationState } from "@tanstack/react-table";
+import { useState } from "react";
+import { TUserData } from "@/types/auth";
+import useMutableSearchParams from "@/hooks/param";
+import { useDebounce } from "use-debounce";
+import SkeletonTable from "@/components/skeleton-state/skeleton-table";
+import Image from "next/image";
+import emptyImage from "@/public/images/no-data.webp";
 export default function TableEmployee() {
   const session = useSession();
 
@@ -23,14 +23,14 @@ export default function TableEmployee() {
 
   const searchParams = useMutableSearchParams();
 
-  const [search] = useDebounce(searchParams.get('search'), 1000);
+  const [search] = useDebounce(searchParams.get("search"), 1000);
 
   const { data, isFetching } = useGetEmployee({
     page: pagination.pageIndex + 1,
     filter: {
-      search: search ?? '',
-      branchId: searchParams.get('branch') ?? '',
-      positionId: searchParams.get('role') ?? '',
+      search: search ?? "",
+      branchId: searchParams.get("branch") ?? "",
+      positionId: searchParams.get("role") ?? "",
     },
   });
 
@@ -38,13 +38,13 @@ export default function TableEmployee() {
     return <SkeletonTable />;
   }
 
-  console.log(user, 'user');
+  console.log(user, "user");
 
   return (
     <div className="overflow-y-auto w-full">
       {!!data?.data.length ? (
         <DataTableX
-          columns={user?.role === 'SUPER_ADMIN' ? columnsSuperAdmin : columnsAdmin}
+          columns={user?.role === "SUPER_ADMIN" ? columnsSuperAdmin : columnsAdmin}
           data={data?.data}
           pageSize={10}
           totalData={data?.meta && data?.meta.totalCount}

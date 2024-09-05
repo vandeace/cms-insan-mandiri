@@ -1,8 +1,8 @@
-import { flexRender, getCoreRowModel, useReactTable } from '@tanstack/react-table';
-import { twMerge } from 'tailwind-merge';
+import { flexRender, getCoreRowModel, useReactTable } from "@tanstack/react-table";
+import { twMerge } from "tailwind-merge";
 
-import { TProps } from './type';
-import { Pagination } from '../pagination';
+import { TProps } from "./type";
+import { Pagination } from "../pagination";
 
 export const DataTableX = <T,>(props: TProps<T>) => {
   const {
@@ -62,19 +62,19 @@ export const DataTableX = <T,>(props: TProps<T>) => {
               className="dark:bg-black-300 border-b border-[#C1C1C1] transition-colors hover:bg-alice-blue"
               style={{
                 backgroundColor: (row.original as any).colour_code,
-                height: '1px',
+                height: "1px",
               }}
             >
               {row.getVisibleCells().map((cell, index) => (
                 <td
                   style={{
                     width: cell.column.getSize(),
-                    height: 'inherit',
+                    height: "inherit",
                   }}
                   key={cell.id}
                   className={twMerge(
-                    'border-b p-2.5',
-                    index === row.getVisibleCells().length - 1 ? 'pr-0 max-w-2' : '',
+                    "border-b p-2.5",
+                    index === row.getVisibleCells().length - 1 ? "pr-0 max-w-2" : "",
                     `max-w-[50px]`,
                   )}
                 >

@@ -1,4 +1,4 @@
-import { useEffect, useRef, DependencyList } from 'react';
+import { useEffect, useRef, DependencyList } from "react";
 
 type CallbackFunction = (...args: any[]) => void;
 

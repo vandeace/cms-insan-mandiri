@@ -1,14 +1,14 @@
-import { useSession } from 'next-auth/react';
-import React, { useState } from 'react';
-import { FiEdit2, FiEye } from 'react-icons/fi';
+import { useSession } from "next-auth/react";
+import React, { useState } from "react";
+import { FiEdit2, FiEye } from "react-icons/fi";
 
-import { TUserData } from '@/types/auth';
-import { PermissionModalAction } from './permission-modal';
-import { TPermission } from '@/types/permission';
-import { Button } from '@/components/ui/button';
+import { TUserData } from "@/types/auth";
+import { PermissionModalAction } from "./permission-modal";
+import { TPermission } from "@/types/permission";
+import { Button } from "@/components/ui/button";
 
 interface PermissionActionProps {
-  tipe: 'approve' | 'detail';
+  tipe: "approve" | "detail";
   permissionData: TPermission;
 }
 
@@ -36,7 +36,7 @@ export const PermissionAction = (props: PermissionActionProps) => {
         variant="secondary"
         className="bg-secondary-blue text-white hover:bg-primary-blue"
       >
-        {props.tipe === 'approve' && user.role === 'SUPER_ADMIN' ? (
+        {props.tipe === "approve" && user.role === "SUPER_ADMIN" ? (
           <>
             <FiEdit2 className="mr-2" /> <span>Approve</span>
           </>

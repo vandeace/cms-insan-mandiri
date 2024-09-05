@@ -1,7 +1,7 @@
-import React, { Suspense } from 'react';
-import TableEmployee from './components/table-employee';
-import TableFilter from './components/table-filter';
-import Title from '@/components/Title/page-title';
+import React, { Suspense } from "react";
+import TableEmployee from "./components/table-employee";
+import TableFilter from "./components/table-filter";
+import Title from "@/components/Title/page-title";
 
 function Page() {
   return (
