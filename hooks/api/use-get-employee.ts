@@ -1,7 +1,7 @@
 import axiosInstance from "@/config/api";
 import { TEmployee, TEmployeeFilter } from "@/types/employee";
 import { TPaginatedRequest } from "@/types/request";
-import { TResponse, TSingleResponse } from "@/types/response";
+import { TResponse } from "@/types/response";
 import { useQuery } from "@tanstack/react-query";
 
 export const useGetEmployee = (params: TPaginatedRequest<TEmployeeFilter>) => {

@@ -9,7 +9,7 @@ const PositionFilter = () => {
   const searchParams = useMutableSearchParams();
   const positionData = getFormattedPosition();
 
-  const onChangeSelect = (e: number) => {
+  const onChangeSelect = (e: string | null) => {
     if (e === "all") {
       searchParams.delete("role");
     } else {

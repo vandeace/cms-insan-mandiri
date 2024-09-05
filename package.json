@@ -7,9 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "check-ts": "tsc --noEmit",
     "format": "prettier --write --cache \"**/*.{ts,tsx,js,jsx,md,mdx,css,yaml,yml}\"",
-    "check": "prettier --check \"**/*.{ts,tsx,js,jsx,md,mdx,css,yaml,yml}\"",
+    "check": "tsc --noEmit",
     "prepare": "husky"
   },
   "dependencies": {

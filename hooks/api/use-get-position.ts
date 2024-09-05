@@ -1,8 +1,8 @@
-import { useQuery } from "@tanstack/react-query";
-import { TBranch, TBranchFilter } from "@/types/branches";
-import { TPaginatedRequest } from "@/types/request";
-import { TResponse, TSingleResponse } from "@/types/response";
 import axiosInstance from "@/config/api";
+import { TBranch } from "@/types/branches";
+import { TPaginatedRequest } from "@/types/request";
+import { TResponse } from "@/types/response";
+import { useQuery } from "@tanstack/react-query";
 
 export const UseGetAllPosition = (params: TPaginatedRequest<null>) => {
   return useQuery<TResponse<TBranch>>({

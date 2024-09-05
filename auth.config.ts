@@ -9,7 +9,7 @@ export const authConfig = {
     jwt: async ({ token, user, account }) => {
       return { ...token, ...user, ...account };
     },
-    session: async ({ token, session, user }) => {
+    session: async ({ token, session }) => {
       const data = token as unknown as TUserToken;
       const today = new Date();
       const sessionEndDate = addDays(today, 6);

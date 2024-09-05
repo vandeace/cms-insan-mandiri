@@ -6,6 +6,12 @@ pnpm run format || {
 }
 
 # Run TypeScript check
+echo "Running Typescript check..."
+pnpm run check || {
+    echo "Typescript check failed. Please fix the type errors and try committing again."
+    exit 1
+}
+# Run ESLint check
 echo "Running ESLint check..."
 pnpm run lint || {
     echo "ESLint check failed. Please fix the type errors and try committing again."
