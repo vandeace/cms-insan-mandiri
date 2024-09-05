@@ -6,7 +6,6 @@ import { getFormattedBranch } from "@/hooks/api/use-get-branch";
 import useMutableSearchParams from "@/hooks/param";
 
 const BranchFilter = () => {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
   const searchParams = useMutableSearchParams();
   const branchData = getFormattedBranch();
 

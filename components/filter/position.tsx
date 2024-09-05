@@ -6,11 +6,10 @@ import useMutableSearchParams from "@/hooks/param";
 import { getFormattedPosition } from "@/hooks/api/use-get-position";
 
 const PositionFilter = () => {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
   const searchParams = useMutableSearchParams();
   const positionData = getFormattedPosition();
 
-  const onChangeSelect = (e: string | null) => {
+  const onChangeSelect = (e: number) => {
     if (e === "all") {
       searchParams.delete("role");
     } else {

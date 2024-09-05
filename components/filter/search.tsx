@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/rules-of-hooks */
 import React from "react";
 import { Label } from "../ui/label";
 import { Input } from "../ui/input";

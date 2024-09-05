@@ -1,8 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { useUpdateOvertime } from "@/hooks/api/use-update-overtime";
 import { TOvertime } from "@/types/overtime";
-import { TPermissionAction } from "@/types/permission";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useQueryClient } from "@tanstack/react-query";
 import { differenceInHours, format } from "date-fns";
 import { AiOutlineClose } from "react-icons/ai";
 import Modal from "react-modal";

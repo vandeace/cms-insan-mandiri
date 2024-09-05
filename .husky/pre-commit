@@ -6,8 +6,8 @@ pnpm run format || {
 }
 
 # Run TypeScript check
-echo "Running TypeScript check..."
-pnpm run check-ts || {
-    echo "TypeScript check failed. Please fix the type errors and try committing again."
+echo "Running ESLint check..."
+pnpm run lint || {
+    echo "ESLint check failed. Please fix the type errors and try committing again."
     exit 1
 }

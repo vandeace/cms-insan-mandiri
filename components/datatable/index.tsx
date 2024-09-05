@@ -37,8 +37,6 @@ export const DataTableX = <T,>(props: TProps<T>) => {
     meta,
   });
 
-  const hasData = data.length > 0;
-
   return (
     <div>
       <table className="w-full text-sm">

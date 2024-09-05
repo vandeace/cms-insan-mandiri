@@ -1,19 +1,11 @@
 import type {
   ColumnDef,
   PaginationState,
-  VisibilityState,
-  RowData,
   RowSelectionState,
   TableMeta,
+  VisibilityState,
 } from "@tanstack/react-table";
 import { Dispatch, ReactNode, SetStateAction } from "react";
-
-declare module "@tanstack/react-table" {
-  /* eslint-disable unused-imports/no-unused-vars */
-  interface TableMeta<TData extends RowData> {
-    updateData: (rowIndex: number, columnId: string, value: unknown) => void;
-  }
-}
 
 export type TProps<T> = {
   data?: T[];

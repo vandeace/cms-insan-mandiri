@@ -1,10 +1,8 @@
 "use client";
-import { twMerge } from "tailwind-merge";
-import { CgProfile } from "react-icons/cg";
 import { useDashboardContext } from "@/hooks/dashboard-context";
 import { useSession } from "next-auth/react";
-import { disconnect } from "@/app/api/lib/action";
-import { useEffect } from "react";
+import { CgProfile } from "react-icons/cg";
+import { twMerge } from "tailwind-merge";
 
 export const TopBar = () => {
   const context = useDashboardContext();
