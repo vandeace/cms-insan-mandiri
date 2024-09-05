@@ -1,4 +1,4 @@
-import { useEffect, useRef, DependencyList } from "react";
+import { useEffect, useRef, DependencyList } from 'react';
 
 type CallbackFunction = (...args: any[]) => void;
 
@@ -8,11 +8,7 @@ type CallbackFunction = (...args: any[]) => void;
  * @param wait - number of milliseconds to delay function execution
  * @param deps - dependencies array
  */
-const useDebounce = (
-  cb: CallbackFunction,
-  wait: number = 500,
-  deps: DependencyList = [],
-): void => {
+const useDebounce = (cb: CallbackFunction, wait: number = 500, deps: DependencyList = []): void => {
   const timerRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {

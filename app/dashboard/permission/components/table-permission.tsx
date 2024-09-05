@@ -1,13 +1,13 @@
-"use client";
-import { DataTableX } from "@/components/datatable";
-import { columns } from "./column-header";
-import { PaginationState } from "@tanstack/react-table";
-import { useState } from "react";
-import useMutableSearchParams from "@/hooks/param";
-import SkeletonTable from "@/components/skeleton-state/skeleton-table";
-import Image from "next/image";
-import emptyImage from "@/public/images/no-data.webp";
-import { useGetPermission } from "@/hooks/api/use-get-permission";
+'use client';
+import { DataTableX } from '@/components/datatable';
+import { columns } from './column-header';
+import { PaginationState } from '@tanstack/react-table';
+import { useState } from 'react';
+import useMutableSearchParams from '@/hooks/param';
+import SkeletonTable from '@/components/skeleton-state/skeleton-table';
+import Image from 'next/image';
+import emptyImage from '@/public/images/no-data.webp';
+import { useGetPermission } from '@/hooks/api/use-get-permission';
 export default function TablePermission() {
   const [pagination, setPagination] = useState<PaginationState>({
     pageIndex: 0,
@@ -19,8 +19,8 @@ export default function TablePermission() {
   const { data, isFetching } = useGetPermission({
     page: pagination.pageIndex + 1,
     filter: {
-      permissionTypeId: searchParams.get("permissionTypeId") ?? "",
-      status: searchParams.get("status") ?? "",
+      permissionTypeId: searchParams.get('permissionTypeId') ?? '',
+      status: searchParams.get('status') ?? '',
     },
   });
 

@@ -1,30 +1,24 @@
-import NextAuth, { CredentialsSignin, User } from "next-auth";
-import { authConfig } from "./auth.config";
-import Credentials from "next-auth/providers/credentials";
-import { z } from "zod";
+import NextAuth, { CredentialsSignin, User } from 'next-auth';
+import { authConfig } from './auth.config';
+import Credentials from 'next-auth/providers/credentials';
+import { z } from 'zod';
 
-async function getUser(
-  email: string,
-  password: string,
-): Promise<User | undefined> {
+async function getUser(email: string, password: string): Promise<User | undefined> {
   try {
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_BE_URL_PRODUCTION}/auth/login`,
-      {
-        method: "POST",
-        body: JSON.stringify({ email, password }),
-        headers: { "Content-Type": "application/json" },
-      },
-    );
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BE_URL_PRODUCTION}/auth/login`, {
+      method: 'POST',
+      body: JSON.stringify({ email, password }),
+      headers: { 'Content-Type': 'application/json' },
+    });
 
     const user = await res.json();
-    if (user.status == "OK") {
+    if (user.status == 'OK') {
       return { id: user.id, token: user.token, email: user.email, ...user };
     } else {
       return undefined;
     }
   } catch (error) {
-    throw new Error("Failed to fetch user.");
+    throw new Error('Failed to fetch user.');
   }
 }
 

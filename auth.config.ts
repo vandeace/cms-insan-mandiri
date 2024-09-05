@@ -1,9 +1,9 @@
-import { NextAuthConfig } from "next-auth";
-import { addDays, formatISO } from "date-fns";
-import { TUserToken } from "./types/auth";
+import { NextAuthConfig } from 'next-auth';
+import { addDays, formatISO } from 'date-fns';
+import { TUserToken } from './types/auth';
 export const authConfig = {
   pages: {
-    signIn: "/login",
+    signIn: '/login',
   },
   callbacks: {
     jwt: async ({ token, user, account }) => {
@@ -17,7 +17,7 @@ export const authConfig = {
         ...session,
         token: data.token.token,
         expires: formatISO(sessionEndDate),
-        authenticated: data.data.role !== ("USER" as unknown as string),
+        authenticated: data.data.role !== ('USER' as unknown as string),
         user: {
           id: data.data.id,
           email: data.data.email,
@@ -30,12 +30,12 @@ export const authConfig = {
     },
     authorized({ auth, request: { nextUrl } }) {
       const isLoggedIn = !!auth?.user;
-      const isOnDashboard = nextUrl.pathname.startsWith("/dashboard");
+      const isOnDashboard = nextUrl.pathname.startsWith('/dashboard');
       if (isOnDashboard) {
         if (isLoggedIn) return true;
         return false; // Redirect unauthenticated users to login page
       } else if (isLoggedIn) {
-        return Response.redirect(new URL("/dashboard", nextUrl));
+        return Response.redirect(new URL('/dashboard', nextUrl));
       }
       return true;
     },

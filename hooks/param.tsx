@@ -1,4 +1,4 @@
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 
 interface UseMutableSearchParams {
   set(key: string, value: string | null): void;
@@ -55,9 +55,7 @@ export default function useMutableSearchParams(): UseMutableSearchParams {
     delete(key, value) {
       const newParams = new URLSearchParams(params);
       if (value) {
-        const newValues = newParams
-          .getAll(key)
-          .filter((item) => item !== value);
+        const newValues = newParams.getAll(key).filter(item => item !== value);
 
         newParams.delete(key);
 

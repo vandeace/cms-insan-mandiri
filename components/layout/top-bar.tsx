@@ -1,10 +1,10 @@
-"use client";
-import { twMerge } from "tailwind-merge";
-import { CgProfile } from "react-icons/cg";
-import { useDashboardContext } from "@/hooks/dashboard-context";
-import { useSession } from "next-auth/react";
-import { disconnect } from "@/app/api/lib/action";
-import { useEffect } from "react";
+'use client';
+import { twMerge } from 'tailwind-merge';
+import { CgProfile } from 'react-icons/cg';
+import { useDashboardContext } from '@/hooks/dashboard-context';
+import { useSession } from 'next-auth/react';
+import { disconnect } from '@/app/api/lib/action';
+import { useEffect } from 'react';
 
 export const TopBar = () => {
   const context = useDashboardContext();
@@ -13,8 +13,8 @@ export const TopBar = () => {
   return (
     <div
       className={twMerge(
-        "fixed right-0 z-10 flex h-[58px] justify-end px-6 py-2.5 border-b-2 bg-columbia-blue",
-        context?.showDesktopSidebar ? "left-[250px]" : "left-[80px]",
+        'fixed right-0 z-10 flex h-[58px] justify-end px-6 py-2.5 border-b-2 bg-columbia-blue',
+        context?.showDesktopSidebar ? 'left-[250px]' : 'left-[80px]',
       )}
     >
       <div className="flex">

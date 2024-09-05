@@ -1,14 +1,12 @@
-import axiosInstance from "@/config/api";
-import { TPermission, TPermissionFilter } from "@/types/permission";
-import { TPaginatedRequest } from "@/types/request";
-import { TResponse } from "@/types/response";
-import { useQuery } from "@tanstack/react-query";
+import axiosInstance from '@/config/api';
+import { TPermission, TPermissionFilter } from '@/types/permission';
+import { TPaginatedRequest } from '@/types/request';
+import { TResponse } from '@/types/response';
+import { useQuery } from '@tanstack/react-query';
 
-export const useGetPermission = (
-  params: TPaginatedRequest<TPermissionFilter>,
-) => {
+export const useGetPermission = (params: TPaginatedRequest<TPermissionFilter>) => {
   return useQuery<TResponse<TPermission>>({
-    queryKey: ["permission", params],
+    queryKey: ['permission', params],
     queryFn: async () => {
       const { data } = await axiosInstance.get(`/permissions`, {
         params: {

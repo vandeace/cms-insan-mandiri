@@ -1,5 +1,5 @@
-"use client";
-import BranchFilter from "@/components/filter/branch";
+'use client';
+import BranchFilter from '@/components/filter/branch';
 
 export default function TableFilter() {
   return (

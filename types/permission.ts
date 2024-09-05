@@ -5,7 +5,7 @@ export type TPermission = {
   startTime: string | Date;
   endTime: string | Date;
   notes: string;
-  status: "REJECTED" | "APPROVED" | "PENDING";
+  status: 'REJECTED' | 'APPROVED' | 'PENDING';
   rejectNotes: string;
   photo: string;
   approvedById: string;
@@ -17,7 +17,7 @@ export type TPermission = {
     email: string;
   };
   permissionType: {
-    name: "Izin" | "Sakit";
+    name: 'Izin' | 'Sakit';
   };
 };
 
@@ -28,5 +28,5 @@ export type TPermissionFilter = {
 
 export type TPermissionAction = {
   id: string;
-  action: "approve" | "reject";
+  action: 'approve' | 'reject';
 };

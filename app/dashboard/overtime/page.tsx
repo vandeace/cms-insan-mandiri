@@ -1,6 +1,6 @@
-import Title from "@/components/Title/page-title";
-import React, { Suspense } from "react";
-import TableOvertime from "./components/table-overtime";
+import Title from '@/components/Title/page-title';
+import React, { Suspense } from 'react';
+import TableOvertime from './components/table-overtime';
 
 function Page() {
   return (

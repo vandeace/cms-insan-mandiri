@@ -1,13 +1,13 @@
-"use client";
-import { DataTableX } from "@/components/datatable";
-import { columns } from "./column-header";
-import { PaginationState } from "@tanstack/react-table";
-import { useState } from "react";
-import useMutableSearchParams from "@/hooks/param";
-import SkeletonTable from "@/components/skeleton-state/skeleton-table";
-import Image from "next/image";
-import emptyImage from "@/public/images/no-data.webp";
-import { useGetOvertime } from "@/hooks/api/use-get-overtime";
+'use client';
+import { DataTableX } from '@/components/datatable';
+import { columns } from './column-header';
+import { PaginationState } from '@tanstack/react-table';
+import { useState } from 'react';
+import useMutableSearchParams from '@/hooks/param';
+import SkeletonTable from '@/components/skeleton-state/skeleton-table';
+import Image from 'next/image';
+import emptyImage from '@/public/images/no-data.webp';
+import { useGetOvertime } from '@/hooks/api/use-get-overtime';
 export default function TablePermission() {
   const [pagination, setPagination] = useState<PaginationState>({
     pageIndex: 0,
@@ -19,7 +19,7 @@ export default function TablePermission() {
   const { data, isFetching } = useGetOvertime({
     page: pagination.pageIndex + 1,
     filter: {
-      status: searchParams.get("status") ?? "",
+      status: searchParams.get('status') ?? '',
     },
   });
 

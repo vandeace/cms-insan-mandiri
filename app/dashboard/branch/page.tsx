@@ -1,7 +1,7 @@
-import React, { Suspense } from "react";
-import TableFilter from "./components/table-filter";
-import Title from "@/components/Title/page-title";
-import TableBranch from "./components/table-branch";
+import React, { Suspense } from 'react';
+import TableFilter from './components/table-filter';
+import Title from '@/components/Title/page-title';
+import TableBranch from './components/table-branch';
 
 function Page() {
   return (

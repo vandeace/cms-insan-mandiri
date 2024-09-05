@@ -1,8 +1,7 @@
-import axios from "axios";
-import { getSession } from "next-auth/react";
+import axios from 'axios';
+import { getSession } from 'next-auth/react';
 
-const baseURL =
-  process.env.NEXT_PUBLIC_BE_URL_PRODUCTION || "http://localhost:3000/api";
+const baseURL = process.env.NEXT_PUBLIC_BE_URL_PRODUCTION || 'http://localhost:3000/api';
 const ApiClient = () => {
   const defaultOptions = {
     baseURL,
@@ -10,7 +9,7 @@ const ApiClient = () => {
 
   const instance = axios.create(defaultOptions);
 
-  instance.interceptors.request.use(async (request) => {
+  instance.interceptors.request.use(async request => {
     const session = await getSession();
     if (session) {
       request.headers.Authorization = `Bearer ${session.token}`;
@@ -19,10 +18,10 @@ const ApiClient = () => {
   });
 
   instance.interceptors.response.use(
-    (response) => {
+    response => {
       return response;
     },
-    (error) => {
+    error => {
       console.log(`error`, error);
     },
   );

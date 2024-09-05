@@ -1,6 +1,6 @@
-import Title from "@/components/Title/page-title";
-import React, { Suspense } from "react";
-import TablePermission from "./components/table-permission";
+import Title from '@/components/Title/page-title';
+import React, { Suspense } from 'react';
+import TablePermission from './components/table-permission';
 
 function Page() {
   return (

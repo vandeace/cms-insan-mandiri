@@ -1,8 +1,8 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import React from "react";
-import { Label } from "../ui/label";
-import { Input } from "../ui/input";
-import useMutableSearchParams from "@/hooks/param";
+import React from 'react';
+import { Label } from '../ui/label';
+import { Input } from '../ui/input';
+import useMutableSearchParams from '@/hooks/param';
 
 interface TFilterSearch {
   placeholder: string;
@@ -20,7 +20,7 @@ const FilterSearch = ({ name, label, placeholder }: TFilterSearch) => {
         id={name}
         placeholder={placeholder}
         defaultValue={searchParams.get(name) ?? undefined}
-        onChange={(e) => {
+        onChange={e => {
           searchParams.set(name, e.currentTarget.value);
         }}
       />

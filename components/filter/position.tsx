@@ -1,15 +1,9 @@
-"use client";
-import React from "react";
-import { Label } from "../ui/label";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "../ui/select";
-import useMutableSearchParams from "@/hooks/param";
-import { getFormattedPosition } from "@/hooks/api/use-get-position";
+'use client';
+import React from 'react';
+import { Label } from '../ui/label';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../ui/select';
+import useMutableSearchParams from '@/hooks/param';
+import { getFormattedPosition } from '@/hooks/api/use-get-position';
 
 const PositionFilter = () => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -17,14 +11,14 @@ const PositionFilter = () => {
   const positionData = getFormattedPosition();
 
   const onChangeSelect = (e: string | null) => {
-    if (e === "all") {
-      searchParams.delete("role");
+    if (e === 'all') {
+      searchParams.delete('role');
     } else {
-      searchParams.set("role", e);
+      searchParams.set('role', e);
     }
   };
 
-  const defaultValue = searchParams.get("role") ?? undefined;
+  const defaultValue = searchParams.get('role') ?? undefined;
 
   return (
     <div>
@@ -37,7 +31,7 @@ const PositionFilter = () => {
         </SelectTrigger>
         <SelectContent>
           <SelectItem value="all">Semua</SelectItem>
-          {positionData.map((branch) => (
+          {positionData.map(branch => (
             <SelectItem value={branch.value} key={branch.label}>
               {branch.label}
             </SelectItem>

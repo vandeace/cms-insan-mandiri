@@ -1,26 +1,26 @@
-import { Button } from "@/components/ui/button";
-import { useUpdatePermission } from "@/hooks/api/use-update-permission";
-import { TPermission } from "@/types/permission";
-import { useQueryClient } from "@tanstack/react-query";
-import { format } from "date-fns";
-import React from "react";
-import { AiOutlineClose } from "react-icons/ai";
-import Modal from "react-modal";
-import { toast } from "react-toastify";
-import { twMerge } from "tailwind-merge";
+import { Button } from '@/components/ui/button';
+import { useUpdatePermission } from '@/hooks/api/use-update-permission';
+import { TPermission } from '@/types/permission';
+import { useQueryClient } from '@tanstack/react-query';
+import { format } from 'date-fns';
+import React from 'react';
+import { AiOutlineClose } from 'react-icons/ai';
+import Modal from 'react-modal';
+import { toast } from 'react-toastify';
+import { twMerge } from 'tailwind-merge';
 
 const customStyles = {
   overlay: {
     zIndex: 1000,
-    backgroundColor: "rgba(0,0,0,0.3)",
+    backgroundColor: 'rgba(0,0,0,0.3)',
   },
   content: {
-    top: "50%",
-    left: "50%",
-    right: "auto",
-    bottom: "auto",
-    marginRight: "-50%",
-    transform: "translate(-50%, -50%)",
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    marginRight: '-50%',
+    transform: 'translate(-50%, -50%)',
   },
 };
 
@@ -44,30 +44,25 @@ export const PermissionModalAction: React.FC<PermissionModalActionProps> = ({
         <div className="flex min-w-[150px] justify-between p-2">
           <span>{label}</span> <span>:</span>
         </div>
-        <span
-          className={twMerge(
-            "p-2 text-sm font-normal text-[#202124]",
-            valueClassName,
-          )}
-        >
+        <span className={twMerge('p-2 text-sm font-normal text-[#202124]', valueClassName)}>
           {value}
         </span>
       </div>
     );
   };
   const getStatusColor = () => {
-    let colorClass = "";
+    let colorClass = '';
     switch (permissionData.status) {
-      case "APPROVED": {
-        colorClass = "text-[#22C55E]";
+      case 'APPROVED': {
+        colorClass = 'text-[#22C55E]';
         break;
       }
-      case "PENDING": {
-        colorClass = "text-[#DEB841]";
+      case 'PENDING': {
+        colorClass = 'text-[#DEB841]';
         break;
       }
-      case "REJECTED": {
-        colorClass = "text-secondary-red";
+      case 'REJECTED': {
+        colorClass = 'text-secondary-red';
         break;
       }
       default: {
@@ -92,28 +87,19 @@ export const PermissionModalAction: React.FC<PermissionModalActionProps> = ({
           >
             <AiOutlineClose />
           </div>
-          <h2 className="text-lg font-black text-secondary-blue">
-            DETAIL PERIZINAN
-          </h2>
+          <h2 className="text-lg font-black text-secondary-blue">DETAIL PERIZINAN</h2>
           <div className="flex flex-col gap-3 border border-columbia-blue p-4">
-            {renderRow("Nama Karyawan", permissionData.userPermission.name)}
-            {renderRow("Jenis Perizinan", permissionData.permissionType.name)}
-            {renderRow(
-              "Tanggal Izin",
-              format(new Date(permissionData.startTime), "dd-MM-yyyy"),
-            )}
-            {renderRow("Keterangan", permissionData.notes)}
-            {renderRow(
-              "Status Izin",
-              permissionData.status,
-              `${getStatusColor()} font-black`,
-            )}
-            {permissionData.status === "APPROVED" &&
-              renderRow("Disetujui Oleh", permissionData.approvedBy.name)}
-            {permissionData.status === "REJECTED" &&
-              renderRow("Alasan Ditolak", permissionData.rejectNotes)}
+            {renderRow('Nama Karyawan', permissionData.userPermission.name)}
+            {renderRow('Jenis Perizinan', permissionData.permissionType.name)}
+            {renderRow('Tanggal Izin', format(new Date(permissionData.startTime), 'dd-MM-yyyy'))}
+            {renderRow('Keterangan', permissionData.notes)}
+            {renderRow('Status Izin', permissionData.status, `${getStatusColor()} font-black`)}
+            {permissionData.status === 'APPROVED' &&
+              renderRow('Disetujui Oleh', permissionData.approvedBy.name)}
+            {permissionData.status === 'REJECTED' &&
+              renderRow('Alasan Ditolak', permissionData.rejectNotes)}
           </div>
-          {permissionData.status === "PENDING" && (
+          {permissionData.status === 'PENDING' && (
             <div className="flex items-center justify-center gap-x-3">
               <Button
                 variant="destructive"
@@ -121,21 +107,21 @@ export const PermissionModalAction: React.FC<PermissionModalActionProps> = ({
                   mutate(
                     {
                       id: permissionData.id,
-                      action: "reject",
+                      action: 'reject',
                     },
                     {
                       onSuccess: () => {
                         closeModal();
                         toast.success(`Berhasil Menolak Perizinan`, {
-                          position: "top-center",
+                          position: 'top-center',
                         });
                         queryClient.invalidateQueries({
-                          queryKey: ["permission-data"],
+                          queryKey: ['permission-data'],
                         });
                       },
                       onError: () => {
-                        toast.error("Gagal Menolak Perizinan", {
-                          position: "top-center",
+                        toast.error('Gagal Menolak Perizinan', {
+                          position: 'top-center',
                         });
                       },
                     },
@@ -151,22 +137,22 @@ export const PermissionModalAction: React.FC<PermissionModalActionProps> = ({
                   mutate(
                     {
                       id: permissionData.id,
-                      action: "approve",
+                      action: 'approve',
                     },
                     {
                       onSuccess: () => {
                         queryClient.resetQueries({
-                          queryKey: ["permission"],
+                          queryKey: ['permission'],
                           exact: true,
                         });
                         closeModal();
                         toast.success(`Berhasil setujui Perizinan`, {
-                          position: "top-center",
+                          position: 'top-center',
                         });
                       },
                       onError: () => {
-                        toast.error("Gagal Menyetujui Perizinan", {
-                          position: "top-center",
+                        toast.error('Gagal Menyetujui Perizinan', {
+                          position: 'top-center',
                         });
                       },
                     },

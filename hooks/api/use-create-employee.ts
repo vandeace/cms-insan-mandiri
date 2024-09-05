@@ -1,6 +1,6 @@
-import { TEmployeeCreateForm } from "@/types/employee";
-import { useMutation } from "@tanstack/react-query";
-import axiosInstance from "@/config/api";
+import { TEmployeeCreateForm } from '@/types/employee';
+import { useMutation } from '@tanstack/react-query';
+import axiosInstance from '@/config/api';
 
 export const useCreateEmployee = () => {
   return useMutation({

@@ -1,11 +1,4 @@
-import {
-  createContext,
-  Dispatch,
-  ReactNode,
-  SetStateAction,
-  useContext,
-  useState,
-} from "react";
+import { createContext, Dispatch, ReactNode, SetStateAction, useContext, useState } from 'react';
 
 export type Context = {
   showDesktopSidebar: boolean;
@@ -40,9 +33,7 @@ const DashboardProvider = ({ children }: Provider) => {
 const useDashboardContext = () => {
   const context = useContext(DashboardContext);
   if (context === undefined) {
-    throw new Error(
-      "usePaginationContext must be used within a PaginationProvider",
-    );
+    throw new Error('usePaginationContext must be used within a PaginationProvider');
   }
   return context;
 };

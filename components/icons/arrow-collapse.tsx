@@ -1,8 +1,6 @@
-import { SVGProps } from "react";
+import { SVGProps } from 'react';
 
-export const ArrowCollapseIcon = (
-  props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>,
-) => {
+export const ArrowCollapseIcon = (props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) => {
   return (
     <svg
       width={30}

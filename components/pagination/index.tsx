@@ -1,15 +1,13 @@
-import { ArrowIcon } from "../icons/arrow";
-import { ArrowCollapseIcon } from "../icons/arrow-collapse";
-import { TProps } from "./type";
+import { ArrowIcon } from '../icons/arrow';
+import { ArrowCollapseIcon } from '../icons/arrow-collapse';
+import { TProps } from './type';
 
 export const Pagination = <T,>(props: TProps<T>) => {
   const { table, totalData } = props;
 
   return (
     <div className="flex items-center justify-between">
-      <div className="mr-3 text-xs font-semibold">
-        Jumlah Data : {totalData ?? 0}
-      </div>
+      <div className="mr-3 text-xs font-semibold">Jumlah Data : {totalData ?? 0}</div>
 
       <div className="mr-3 flex items-center space-x-1">
         <button
