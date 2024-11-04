@@ -1,5 +1,6 @@
 import { IconType } from "react-icons";
 import { FaDatabase, FaFilePen, FaBuildingCircleCheck } from "react-icons/fa6";
+import { MdDashboard } from "react-icons/md";
 
 export type MenuChild = {
   title: string;
@@ -15,6 +16,12 @@ export type Menu = {
 };
 
 export const menu: Menu[] = [
+  {
+    id: 0,
+    title: "Dashboard",
+    icon: MdDashboard,
+    link: "/dashboard",
+  },
   {
     id: 1,
     title: "Master Data",

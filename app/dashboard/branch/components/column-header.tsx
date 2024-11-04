@@ -51,8 +51,8 @@ export const columnsSuperAdmin = [
     header: () => createColumn("Action", "text-center text-[#202124] font-bold text-sm"),
     cell: info => (
       <div className="flex items-center justify-center">
-        <Link href={`/branches/${info.row.original.id}`}>
-          <Button variant="secondary" className="bg-secondary-blue text-[#fff]">
+        <Link href={`/dashboard/branch/${info.row.original.id}`}>
+          <Button variant="default" className="bg-secondary-blue text-[#fff]">
             <FaEdit className="mr-2" />
             Edit
           </Button>

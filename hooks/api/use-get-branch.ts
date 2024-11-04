@@ -38,5 +38,6 @@ export const useGetBranchDetail = (id: string | undefined) => {
       const { data } = await axiosInstance.get(`/branches/${id}`);
       return data;
     },
+    enabled: !!id,
   });
 };

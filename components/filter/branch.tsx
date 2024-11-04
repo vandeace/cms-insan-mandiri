@@ -5,7 +5,11 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from ".
 import { getFormattedBranch } from "@/hooks/api/use-get-branch";
 import useMutableSearchParams from "@/hooks/param";
 
-const BranchFilter = () => {
+interface TBranchFilter {
+  defaultValueBranch?: string;
+  disabledAll?: boolean;
+}
+const BranchFilter = ({ defaultValueBranch, disabledAll = false }: TBranchFilter) => {
   const searchParams = useMutableSearchParams();
   const branchData = getFormattedBranch();
 
@@ -16,18 +20,20 @@ const BranchFilter = () => {
       searchParams.set("branch", e);
     }
   };
-  const defaultValue = searchParams.get("branch") ?? undefined;
+
+  const value = searchParams.get("branch") ?? defaultValueBranch ?? undefined;
+
   return (
     <div>
       <Label htmlFor="search" className="mb-1 block text-sm font-bold">
         Kantor
       </Label>
-      <Select onValueChange={onChangeSelect} defaultValue={defaultValue}>
+      <Select onValueChange={onChangeSelect} value={value}>
         <SelectTrigger>
           <SelectValue placeholder="Pilih Kantor" />
         </SelectTrigger>
         <SelectContent>
-          <SelectItem value="all">Semua</SelectItem>
+          {!disabledAll && <SelectItem value="all">Semua</SelectItem>}
           {branchData.map(branch => (
             <SelectItem value={branch.value} key={branch.label}>
               {branch.label}
