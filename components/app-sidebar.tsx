@@ -12,6 +12,7 @@ import {
   SidebarRail,
 } from "@/components/ui/sidebar";
 import { ChevronRightIcon } from "@radix-ui/react-icons";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import * as React from "react";
@@ -70,11 +71,11 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
     <Sidebar {...props}>
       <SidebarHeader>
-        <SidebarMenuButton asChild isActive={false}>
-          <Link href={"/dashboard"}>Dashboard</Link>
-        </SidebarMenuButton>
+        <Link href={"/dashboard"}>
+          <Image src={"/images/logo.png"} alt="logo-insan-mandiri" width={180} height={100} />
+        </Link>
       </SidebarHeader>
-      <SidebarContent className="gap-0">
+      <SidebarContent className="gap-0 ">
         {/* We create a collapsible SidebarGroup for each parent. */}
         {data.navMain.map(item => (
           <Collapsible
