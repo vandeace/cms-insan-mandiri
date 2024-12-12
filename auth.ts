@@ -5,11 +5,15 @@ import { z } from "zod";
 
 async function getUser(email: string, password: string): Promise<User | undefined> {
   try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BE_URL_PRODUCTION}/auth/login`, {
+    console.log("email :", email);
+    console.log("password :", password);
+    const res = await fetch(`${process.env.BE_URL_PRODUCTION}/api/auth/login`, {
       method: "POST",
       body: JSON.stringify({ email, password }),
       headers: { "Content-Type": "application/json" },
     });
+
+    console.log("res :", res);
 
     const user = await res.json();
     if (user.status == "OK") {

@@ -1,14 +1,14 @@
 "use client";
 import { DataTableX } from "@/components/datatable";
 import SkeletonTable from "@/components/skeleton-state/skeleton-table";
+import { getFormattedBranch } from "@/hooks/api/use-get-branch";
 import { useGetDailyReportQuery } from "@/hooks/api/use-get-daily-report";
+import useMutableSearchParams from "@/hooks/param";
+import emptyImage from "@/public/images/no-data.webp";
 import { PaginationState } from "@tanstack/react-table";
 import Image from "next/image";
-import emptyImage from "@/public/images/no-data.webp";
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
 import { columns } from "./column-header";
-import { getFormattedBranch } from "@/hooks/api/use-get-branch";
-import useMutableSearchParams from "@/hooks/param";
 
 const TableAbsence = () => {
   const branchData = getFormattedBranch();

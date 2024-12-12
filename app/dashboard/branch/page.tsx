@@ -3,7 +3,7 @@ import TableFilter from "./components/table-filter";
 import Title from "@/components/Title/page-title";
 import TableBranch from "./components/table-branch";
 
-function Page() {
+async function Page() {
   return (
     <div className="flex w-full flex-col">
       <Title urlBtn="/dashboard/branch/add" title="Data Kantor" />

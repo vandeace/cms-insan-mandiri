@@ -1,4 +1,4 @@
-import { SVGProps } from "react";
+import { JSX, SVGProps } from "react";
 
 export const EyeSlashIcon = (props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) => {
   return (
