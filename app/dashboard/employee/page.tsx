@@ -3,7 +3,7 @@ import TableEmployee from "./components/table-employee";
 import TableFilter from "./components/table-filter";
 import Title from "./components/page-title";
 
-function Page() {
+async function Page() {
   return (
     <div className="flex w-full flex-col">
       <Title />

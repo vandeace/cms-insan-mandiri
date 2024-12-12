@@ -1,3 +1,3 @@
-export default function DetailEmployeePage() {
+export default async function DetailEmployeePage() {
   return <div>DetailEmployeePage</div>;
 }
