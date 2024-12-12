@@ -67,12 +67,17 @@ const data = {
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const pathname = usePathname();
-  console.log("pathname :", pathname);
   return (
     <Sidebar {...props}>
       <SidebarHeader>
-        <Link href={"/dashboard"}>
-          <Image src={"/images/logo.png"} alt="logo-insan-mandiri" width={180} height={100} />
+        <Link href={"/dashboard"} className="w-[180px] h-[50px]">
+          <Image
+            src={"/images/logo.png"}
+            alt="logo-insan-mandiri"
+            width={180}
+            height={50}
+            loading="eager"
+          />
         </Link>
       </SidebarHeader>
       <SidebarContent className="gap-0 ">

@@ -8,7 +8,7 @@ export default function TableFilter() {
   const branchData = getFormattedBranch();
 
   return (
-    <div className="grid grid-cols-3">
+    <div className="grid grid-cols-3 gap-x-4">
       <div className="grid w-full max-w-sm items-center gap-2">
         <FilterSearch label="Karyawan" name="search" placeholder="Cari Karyawan" />
       </div>

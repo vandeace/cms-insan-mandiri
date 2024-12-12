@@ -7,7 +7,7 @@ async function getUser(email: string, password: string): Promise<User | undefine
   try {
     console.log("email :", email);
     console.log("password :", password);
-    const res = await fetch(`${process.env.BE_URL_PRODUCTION}/auth/login`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BE_URL_PRODUCTION}/auth/login`, {
       method: "POST",
       body: JSON.stringify({ email, password }),
       headers: { "Content-Type": "application/json" },

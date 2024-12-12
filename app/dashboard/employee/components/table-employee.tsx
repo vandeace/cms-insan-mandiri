@@ -11,6 +11,7 @@ import { useDebounce } from "use-debounce";
 import SkeletonTable from "@/components/skeleton-state/skeleton-table";
 import Image from "next/image";
 import emptyImage from "@/public/images/no-data.webp";
+
 export default function TableEmployee() {
   const session = useSession();
 

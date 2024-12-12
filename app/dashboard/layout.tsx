@@ -41,18 +41,6 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                     {index < pathSegments.length - 1 && <BreadcrumbSeparator />}
                   </React.Fragment>
                 ))}
-                {/* //{" "}
-                <BreadcrumbItem className="hidden md:block">
-                  // <BreadcrumbLink href="#">Building Your Application</BreadcrumbLink>
-                  //{" "}
-                </BreadcrumbItem>
-                // <BreadcrumbSeparator className="hidden md:block" />
-                //{" "}
-                <BreadcrumbItem>
-                  // <BreadcrumbPage>Data Fetching</BreadcrumbPage>
-                  //{" "}
-                </BreadcrumbItem>
-              */}
               </BreadcrumbList>
             </Breadcrumb>
           </header>
