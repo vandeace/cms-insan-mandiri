@@ -13,8 +13,6 @@ async function getUser(email: string, password: string): Promise<User | undefine
       headers: { "Content-Type": "application/json" },
     });
 
-    console.log("res :", res);
-
     const user = await res.json();
     if (user.status == "OK") {
       return { id: user.id, token: user.token, email: user.email, ...user };
