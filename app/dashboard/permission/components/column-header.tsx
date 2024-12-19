@@ -9,13 +9,6 @@ export const columnHelper = createColumnHelper<TPermission>();
 
 export const columns = [
   columnHelper.display({
-    id: "No",
-    size: 5,
-    maxSize: 5,
-    header: () => createColumn("No", "text-left text-[#202124] font-bold text-sm w-[20px]"),
-    cell: info => <div className="py-1">{info.row.index + 1}</div>,
-  }),
-  columnHelper.display({
     id: "Tanggal",
     size: 80,
     header: () => createColumn("Tanggal Izin", "text-left text-[#202124] font-bold text-sm"),
@@ -38,22 +31,22 @@ export const columns = [
   columnHelper.display({
     id: "tipe",
     size: 80,
-    header: () => createColumn("Tipe", "text-left text-[#202124] font-bold text-sm"),
+    header: () => createColumn("Tipe", "text-center text-[#202124] font-bold text-sm"),
     cell: info => (
       <div className="text-sm">
-        <p className="py-1">{info.row.original.permissionType.name}</p>
+        <p className="py-1 text-center">{info.row.original.permissionType.name}</p>
       </div>
     ),
   }),
   columnHelper.display({
     id: "Status",
     size: 80,
-    header: () => createColumn("Status", "text-left text-[#202124] font-bold text-sm"),
+    header: () => createColumn("Status", "text-center text-[#202124] font-bold text-sm"),
     cell: info => (
       <div className="text-sm">
         <p
           className={twMerge(
-            "py-1 font-black",
+            "py-1 font-black text-center",
             info.row.original.status === "APPROVED" && "text-[#22C55E]",
             info.row.original.status === "PENDING" && "text-[#DEB841]",
             info.row.original.status === "REJECTED" && "text-secondary-red",

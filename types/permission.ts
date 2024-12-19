@@ -22,6 +22,7 @@ export type TPermission = {
 };
 
 export type TPermissionFilter = {
+  search?: string;
   permissionTypeId?: string;
   status?: string;
 };

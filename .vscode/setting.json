@@ -3,6 +3,10 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
   },
-
+  "typescript.preference.autoImportFileExcludePatterns": [
+    "**/node_modules/**",
+    "**/dist/**",
+    "@radix/ui/*"
+  ],
   "prettier.endOfLine": "crlf"
 }

@@ -1,27 +1,11 @@
 import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { useUpdateOvertime } from "@/hooks/api/use-update-overtime";
 import { TOvertime } from "@/types/overtime";
 import { useQueryClient } from "@tanstack/react-query";
 import { differenceInHours, format } from "date-fns";
-import { AiOutlineClose } from "react-icons/ai";
-import Modal from "react-modal";
 import { toast } from "react-toastify";
 import { twMerge } from "tailwind-merge";
-
-const customStyles = {
-  overlay: {
-    zIndex: 1000,
-    backgroundColor: "rgba(0,0,0,0.3)",
-  },
-  content: {
-    top: "50%",
-    left: "50%",
-    right: "auto",
-    bottom: "auto",
-    marginRight: "-50%",
-    transform: "translate(-50%, -50%)",
-  },
-};
 
 interface OvertimeModalActionProps {
   modalIsOpen: boolean;
@@ -35,14 +19,14 @@ export const OvertimeModalAction: React.FC<OvertimeModalActionProps> = ({
   overtimeData,
 }) => {
   const queryClient = useQueryClient();
+  const { mutate } = useUpdateOvertime();
+
   const getDifferenceInHours = (startTime: string, endTime: string) => {
     const start = new Date(startTime);
     const end = new Date(endTime);
     const diffInHrs = differenceInHours(end, start);
     return `${diffInHrs} Jam`;
   };
-
-  const { mutate } = useUpdateOvertime();
 
   const renderRow = (label: string, value: string, valueClassName?: string) => {
     return (
@@ -56,54 +40,39 @@ export const OvertimeModalAction: React.FC<OvertimeModalActionProps> = ({
       </div>
     );
   };
+
   const getStatusColor = () => {
-    let colorClass = "";
     switch (overtimeData.status) {
-      case "APPROVED": {
-        colorClass = "text-[#22C55E]";
-        break;
-      }
-      case "PENDING": {
-        colorClass = "text-[#DEB841]";
-        break;
-      }
-      case "REJECTED": {
-        colorClass = "text-secondary-red";
-        break;
-      }
-      default: {
-        break;
-      }
+      case "APPROVED":
+        return "text-[#22C55E]";
+      case "PENDING":
+        return "text-[#DEB841]";
+      case "REJECTED":
+        return "text-secondary-red";
+      default:
+        return "";
     }
-    return colorClass;
   };
 
   return (
-    <div>
-      <Modal
-        isOpen={modalIsOpen}
-        onRequestClose={closeModal}
-        style={customStyles}
-        contentLabel="Example Modal"
-      >
-        <div className="flex w-[400px] flex-col items-center gap-3">
-          <div
-            className="fixed right-[10px] top-2 cursor-pointer rounded-full border border-columbia-blue p-2"
-            onClick={closeModal}
-          >
-            <AiOutlineClose />
-          </div>
-          <h2 className="text-lg font-black text-secondary-blue">DETAIL LEMBURAN</h2>
+    <Dialog open={modalIsOpen} onOpenChange={closeModal}>
+      <DialogContent className="w-[400px]">
+        <DialogHeader>
+          <DialogTitle className="text-center text-lg font-black text-secondary-blue">
+            DETAIL LEMBURAN
+          </DialogTitle>
+        </DialogHeader>
+
+        <div className="flex flex-col gap-3">
           <div className="flex flex-col gap-3 border border-columbia-blue p-4">
             {renderRow("Nama Karyawan", overtimeData.user.name)}
             {renderRow("Tanggal Lembur", format(new Date(overtimeData.startTime), "dd-MM-yyyy"))}
             {renderRow(
               "Total Jam",
-
-              `${getDifferenceInHours(
+              getDifferenceInHours(
                 overtimeData.startTime as string,
                 overtimeData.endTime as string,
-              )}`,
+              ),
             )}
             {renderRow("Keterangan", overtimeData.notes)}
             {renderRow("Status", overtimeData.status, `${getStatusColor()} font-black`)}
@@ -111,6 +80,7 @@ export const OvertimeModalAction: React.FC<OvertimeModalActionProps> = ({
               overtimeData.approvedBy?.name &&
               renderRow("Disetujui Oleh", overtimeData.approvedBy.name)}
           </div>
+
           {overtimeData.status === "PENDING" && (
             <div className="flex items-center justify-center gap-x-3">
               <Button
@@ -174,7 +144,7 @@ export const OvertimeModalAction: React.FC<OvertimeModalActionProps> = ({
             </div>
           )}
         </div>
-      </Modal>
-    </div>
+      </DialogContent>
+    </Dialog>
   );
 };

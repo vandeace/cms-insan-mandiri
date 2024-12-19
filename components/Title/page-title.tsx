@@ -14,7 +14,7 @@ export default function Title({ title, urlBtn }: TTitle) {
   const user = session.data?.user as unknown as TUserData;
   const router = useRouter();
   return (
-    <div className="mb-3 flex items-center justify-between rounded-md bg-[#fff] p-4 drop-shadow-2xl">
+    <div className="flex items-center justify-between rounded-md px-4 h-16">
       <PageTitle>{title}</PageTitle>
       {user?.role === "SUPER_ADMIN" && urlBtn && (
         <Button onClick={() => router.push(urlBtn)} className="w-[200px] text-[#fff] ">

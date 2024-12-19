@@ -1,28 +1,12 @@
 import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { useUpdatePermission } from "@/hooks/api/use-update-permission";
 import { TPermission } from "@/types/permission";
 import { useQueryClient } from "@tanstack/react-query";
 import { format } from "date-fns";
 import React from "react";
-import { AiOutlineClose } from "react-icons/ai";
-import Modal from "react-modal";
 import { toast } from "react-toastify";
 import { twMerge } from "tailwind-merge";
-
-const customStyles = {
-  overlay: {
-    zIndex: 1000,
-    backgroundColor: "rgba(0,0,0,0.3)",
-  },
-  content: {
-    top: "50%",
-    left: "50%",
-    right: "auto",
-    bottom: "auto",
-    marginRight: "-50%",
-    transform: "translate(-50%, -50%)",
-  },
-};
 
 interface PermissionModalActionProps {
   modalIsOpen: boolean;
@@ -37,7 +21,7 @@ export const PermissionModalAction: React.FC<PermissionModalActionProps> = ({
 }) => {
   const { mutate } = useUpdatePermission();
   const queryClient = useQueryClient();
-  // TODO: fix query invalidate
+
   const renderRow = (label: string, value: string, valueClassName?: string) => {
     return (
       <div className="grid grid-cols-2 text-sm font-bold text-[#202124]">
@@ -50,44 +34,30 @@ export const PermissionModalAction: React.FC<PermissionModalActionProps> = ({
       </div>
     );
   };
+
   const getStatusColor = () => {
-    let colorClass = "";
     switch (permissionData.status) {
-      case "APPROVED": {
-        colorClass = "text-[#22C55E]";
-        break;
-      }
-      case "PENDING": {
-        colorClass = "text-[#DEB841]";
-        break;
-      }
-      case "REJECTED": {
-        colorClass = "text-secondary-red";
-        break;
-      }
-      default: {
-        break;
-      }
+      case "APPROVED":
+        return "text-[#22C55E]";
+      case "PENDING":
+        return "text-[#DEB841]";
+      case "REJECTED":
+        return "text-secondary-red";
+      default:
+        return "";
     }
-    return colorClass;
   };
 
   return (
-    <div>
-      <Modal
-        isOpen={modalIsOpen}
-        onRequestClose={closeModal}
-        style={customStyles}
-        contentLabel="Example Modal"
-      >
-        <div className="flex w-[400px] flex-col items-center gap-3">
-          <div
-            className="fixed right-[10px] top-2 cursor-pointer rounded-full border border-columbia-blue p-2"
-            onClick={closeModal}
-          >
-            <AiOutlineClose />
-          </div>
-          <h2 className="text-lg font-black text-secondary-blue">DETAIL PERIZINAN</h2>
+    <Dialog open={modalIsOpen} onOpenChange={closeModal}>
+      <DialogContent className="w-[400px]">
+        <DialogHeader>
+          <DialogTitle className="text-center text-lg font-black text-secondary-blue">
+            DETAIL PERIZINAN
+          </DialogTitle>
+        </DialogHeader>
+
+        <div className="flex flex-col gap-3">
           <div className="flex flex-col gap-3 border border-columbia-blue p-4">
             {renderRow("Nama Karyawan", permissionData.userPermission.name)}
             {renderRow("Jenis Perizinan", permissionData.permissionType.name)}
@@ -99,6 +69,7 @@ export const PermissionModalAction: React.FC<PermissionModalActionProps> = ({
             {permissionData.status === "REJECTED" &&
               renderRow("Alasan Ditolak", permissionData.rejectNotes)}
           </div>
+
           {permissionData.status === "PENDING" && (
             <div className="flex items-center justify-center gap-x-3">
               <Button
@@ -164,7 +135,7 @@ export const PermissionModalAction: React.FC<PermissionModalActionProps> = ({
             </div>
           )}
         </div>
-      </Modal>
-    </div>
+      </DialogContent>
+    </Dialog>
   );
 };

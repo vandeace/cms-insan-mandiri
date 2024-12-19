@@ -11,7 +11,7 @@ export const UseGetAllBranch = (params: TPaginatedRequest<TBranchFilter>) => {
       const { data } = await axiosInstance.get(`/branches`, {
         params: {
           page: params.page ?? 1,
-          limit: params.limit ?? 10,
+          size: params.limit ?? 10,
           search: params.filter?.search,
         },
       });

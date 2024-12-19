@@ -42,3 +42,25 @@ export interface AttendancesEntity {
 export interface PositionOrBranch {
   name: string;
 }
+
+export interface TMonthlyReportParams {
+  month: Date;
+  branchId?: string;
+  page?: number;
+  limit?: number;
+  search?: string;
+}
+
+export interface TMonthlyAbsenceReport {
+  id: string;
+  name: string;
+  nik: string;
+  email: string;
+  stats: Stats;
+  position: PositionOrBranch;
+}
+export interface Stats {
+  attendances: number;
+  overtimes: number;
+  permissions: number;
+}
