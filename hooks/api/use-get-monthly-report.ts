@@ -1,6 +1,7 @@
 import axiosInstance from "@/config/api";
 import { TMonthlyAbsenceReport, TMonthlyReportParams } from "@/types/absence";
 import { TResponse } from "@/types/response";
+import { parsedTime } from "@/utils/parsed-time";
 import { useQuery } from "@tanstack/react-query";
 
 export const useGetMonthlyReport = (params: TMonthlyReportParams) => {
@@ -8,12 +9,7 @@ export const useGetMonthlyReport = (params: TMonthlyReportParams) => {
     queryKey: ["monthlyReport", params],
     queryFn: async () => {
       try {
-        const year = new Date(params.month).getFullYear();
-        const monthNumber = params.month.getMonth();
-        const startDate = new Date(year, monthNumber, 1);
-        const endDate = new Date(year, monthNumber + 1, 0);
-        const formattedStartDate = startDate.toISOString().split("T")[0];
-        const formattedEndDate = endDate.toISOString().split("T")[0];
+        const { formattedEndDate, formattedStartDate } = parsedTime(params.month);
 
         const { data } = await axiosInstance.get("/reports/stats", {
           params: {

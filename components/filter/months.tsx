@@ -13,6 +13,11 @@ const MonthsFilter = () => {
     parseAsIsoDate.withDefault(new Date(new Date().toISOString().split("T")[0])),
   );
 
+  const onMonthChange = (date: Date) => {
+    const localDate = new Date(date.getTime() - date.getTimezoneOffset() * 60000);
+    setMonth(localDate);
+  };
+
   return (
     <div>
       <Label htmlFor="month" className="mb-1 block text-sm font-bold">
@@ -40,7 +45,7 @@ const MonthsFilter = () => {
           </Button>
         </PopoverTrigger>
         <PopoverContent className="w-auto p-0">
-          <MonthPicker currentMonth={month} onMonthChange={setMonth} />
+          <MonthPicker currentMonth={month} onMonthChange={onMonthChange} />
         </PopoverContent>
       </Popover>
     </div>

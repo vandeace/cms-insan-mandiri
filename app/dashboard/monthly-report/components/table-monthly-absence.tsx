@@ -9,8 +9,8 @@ import { columns } from "./column-header";
 const DataNotFound = dynamic(() => import("@/components/data-not-found"));
 
 const TableAbsenceMonthly = () => {
-  const [date] = useQueryState(
-    "date",
+  const [month] = useQueryState(
+    "month",
     parseAsIsoDate.withDefault(new Date(new Date().toISOString().split("T")[0])),
   );
 
@@ -19,7 +19,7 @@ const TableAbsenceMonthly = () => {
   const [page] = useQueryState("page", parseAsInteger.withDefault(1));
   const [limit] = useQueryState("limit", parseAsInteger.withDefault(10));
   const { data, isFetching } = useGetMonthlyReport({
-    month: date,
+    month: month,
     branchId: branch,
     page: page,
     search,

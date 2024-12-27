@@ -1,6 +1,9 @@
 import { TMonthlyAbsenceReport } from "@/types/absence";
 import { createColumn } from "@/utils/table";
 import { createColumnHelper } from "@tanstack/react-table";
+import { Eye } from "lucide-react";
+import Link from "next/link";
+import { parseAsIsoDate, useQueryState } from "nuqs";
 
 export const columnHelper = createColumnHelper<TMonthlyAbsenceReport>();
 
@@ -40,7 +43,7 @@ export const columns = [
   columnHelper.display({
     id: "overtimes",
     size: 80,
-    header: () => createColumn("Check In", "text-center text-[#202124] font-bold text-sm"),
+    header: () => createColumn("Lemburan", "text-center text-[#202124] font-bold text-sm"),
     cell: info => (
       <div className="text-sm">
         <p className="py-1 text-center">{info.row.original.stats.overtimes} Jam</p>
@@ -56,5 +59,29 @@ export const columns = [
         <p className="py-1 text-center">{info.row.original.stats.permissions} Hari</p>
       </div>
     ),
+  }),
+  columnHelper.display({
+    id: "action",
+    size: 80,
+    header: () => createColumn("Action", "text-center text-[#202124] font-bold text-sm"),
+    cell: info => {
+      const [month] = useQueryState(
+        "month",
+        parseAsIsoDate.withDefault(new Date(new Date().toISOString().split("T")[0])),
+      );
+      return (
+        <div className="flex items-center justify-center w-full">
+          <Link
+            href={`/dashboard/monthly-report/${info.row.original.id}${
+              month
+                ? `?month=${month.getFullYear()}-${String(month.getMonth() + 1).padStart(2, "0")}-01`
+                : ""
+            }`}
+          >
+            <Eye />
+          </Link>
+        </div>
+      );
+    },
   }),
 ];
