@@ -11,7 +11,7 @@ export const UseGetAllPosition = (params: TPaginatedRequest<null>) => {
       const { data } = await axiosInstance.get(`/positions`, {
         params: {
           page: params.page ?? 1,
-          limit: params.limit ?? 10,
+          size: params.limit ?? 10,
         },
       });
       return data;
@@ -20,7 +20,9 @@ export const UseGetAllPosition = (params: TPaginatedRequest<null>) => {
 };
 
 export const getFormattedPosition = () => {
-  const { data } = UseGetAllPosition({});
+  const { data } = UseGetAllPosition({
+    limit: 0,
+  });
 
   return data?.data.length
     ? data.data.map(item => ({

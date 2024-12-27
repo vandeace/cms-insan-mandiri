@@ -6,8 +6,8 @@ import TableFilter from "./components/filter-daily-absence";
 function Page() {
   return (
     <div className="flex w-full flex-col">
-      <Title title="Laporan Harian" />
-      <section className="flex w-full flex-col gap-y-3 rounded-md border border-alice-blue bg-[#fff] p-4 drop-shadow-2xl">
+      <Title title="Laporan Absensi Harian" />
+      <section className="flex w-full flex-col gap-y-3 rounded-md border border-alice-blue  p-4 drop-shadow-2xl">
         <TableFilter />
         <TableAbsence />
       </section>

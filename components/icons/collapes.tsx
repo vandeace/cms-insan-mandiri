@@ -1,4 +1,4 @@
-import { SVGProps } from "react";
+import { JSX, SVGProps } from "react";
 
 export const CollapseIcon = (props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) => {
   return (

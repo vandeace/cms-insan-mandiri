@@ -17,14 +17,14 @@ export interface TAbsenceResponse {
   branchId: string;
   createdAt: string;
   updatedAt: string;
-  attendances?: AttendancesEntity[] | null;
+  attendances?: TAttendancesEntity[] | null;
   permissions?: null[] | null;
   overtimes?: null[] | null;
   position: PositionOrBranch;
   branch: PositionOrBranch;
   status: string;
 }
-export interface AttendancesEntity {
+export interface TAttendancesEntity {
   id: string;
   userId: string;
   date: string;
@@ -41,4 +41,38 @@ export interface AttendancesEntity {
 }
 export interface PositionOrBranch {
   name: string;
+}
+
+export interface TMonthlyReportParams {
+  month: Date;
+  branchId?: string;
+  page?: number;
+  limit?: number;
+  search?: string;
+}
+export interface TEmployeeReportParams {
+  month: Date;
+  userId: string;
+}
+
+export interface TMonthlyAbsenceReport {
+  id: string;
+  name: string;
+  nik: string;
+  email: string;
+  stats: TStats;
+  position: PositionOrBranch;
+}
+export interface TStats {
+  attendances: number;
+  overtimes: number;
+  permissions: number;
+}
+
+export interface TEmployeeReport {
+  date: Date;
+  isWeekend: boolean;
+  isHoliday: boolean;
+  attendance?: TAttendancesEntity;
+  status: "HADIR" | "TIDAK HADIR";
 }

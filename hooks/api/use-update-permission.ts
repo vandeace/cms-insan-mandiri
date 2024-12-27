@@ -6,7 +6,12 @@ export const useUpdatePermission = () => {
   return useMutation({
     mutationKey: ["updatePermission"],
     mutationFn: async (param: TPermissionAction) => {
-      const { data } = await axiosInstance.patch(`/permissions/${param.id}/${param.action}`);
+      const { data } = await axiosInstance.patch(
+        `/permissions/${param.id}/${param.action}`,
+        param.action === "reject" && {
+          rejectNotes: "",
+        },
+      );
       return data;
     },
   });

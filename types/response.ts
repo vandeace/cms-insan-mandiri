@@ -9,10 +9,10 @@ export type TResponse<T> = {
     last: string;
   };
   meta?: {
-    currentPage: number;
-    totalPage: number;
-    pageSize: number;
+    page: number;
+    size: number;
     totalCount: number;
+    totalPage: number;
   };
 };
 

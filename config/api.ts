@@ -1,5 +1,6 @@
+import { disconnect } from "@/app/api/lib/action";
 import axios from "axios";
-import { signOut, getSession } from "next-auth/react";
+import { getSession } from "next-auth/react";
 
 const baseURL = process.env.NEXT_PUBLIC_BE_URL_PRODUCTION || "http://localhost:3000/api";
 const ApiClient = () => {
@@ -24,7 +25,7 @@ const ApiClient = () => {
     error => {
       console.log(`error`, error);
       if (error.response.data.status === 401) {
-        signOut();
+        disconnect();
       }
     },
   );

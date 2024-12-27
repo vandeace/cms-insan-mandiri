@@ -11,7 +11,7 @@ export const useGetOvertime = (params: TPaginatedRequest<TOvertimeFilter>) => {
       const { data } = await axiosInstance.get(`/overtimes`, {
         params: {
           page: params.page ?? 1,
-          limit: params.limit ?? 10,
+          size: params.limit ?? 10,
           status: params.filter?.status ?? undefined,
         },
       });

@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { TOvertime } from "@/types/overtime";
 import { useSession } from "next-auth/react";
 import React, { useState } from "react";
-import { FiEdit2, FiEye } from "react-icons/fi";
+import { Eye, Pencil } from "lucide-react";
 import { OvertimeModalAction } from "./overtime-modal";
 import { TUserData } from "@/types/auth";
 
@@ -31,15 +31,14 @@ export const OvertimeAction = (props: OvertimeActionProps) => {
         />
       )}
 
-      <Button onClick={() => onClick()} variant="default">
+      <Button variant="ghost" className="h-8 w-8 p-0" onClick={onClick}>
         {props.tipe === "approve" && user.role === "SUPER_ADMIN" ? (
           <>
-            <FiEdit2 className="mr-2" /> <span>Approve</span>
+            <Pencil className="mr-2" />
           </>
         ) : (
           <>
-            <FiEye className="mr-2" />
-            <span>Detail</span>
+            <Eye className="h-4 w-4" />
           </>
         )}
       </Button>

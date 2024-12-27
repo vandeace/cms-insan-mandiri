@@ -8,17 +8,11 @@ export const columnHelper = createColumnHelper<TAbsenceResponse>();
 
 export const columns = [
   columnHelper.display({
-    id: "No",
-    size: 5,
-    header: () => createColumn("No", "text-left text-[#202124] font-bold text-sm max-w-[10px]"),
-    cell: info => <div className="py-1">{info.row.index + 1}</div>,
-  }),
-  columnHelper.display({
     id: "Nama",
     size: 80,
     header: () => createColumn("Nama", "text-left text-[#202124] font-bold text-sm"),
     cell: info => (
-      <div className="text-sm">
+      <div className="text-sm md:min-w-[200px]">
         <p className="py-1">{info.row.original.name}</p>
       </div>
     ),
@@ -36,7 +30,7 @@ export const columns = [
   columnHelper.display({
     id: "Status",
     size: 80,
-    header: () => createColumn("Status", "text-left text-[#202124] font-bold text-sm"),
+    header: () => createColumn("Status", "text-center text-[#202124] font-bold text-sm"),
     cell: info => {
       const status = info.row.original.status;
 
@@ -44,7 +38,7 @@ export const columns = [
         <div className="text-sm">
           <p
             className={twMerge(
-              "py-1",
+              "py-1 text-center",
               status === "TIDAK HADIR" && "font-bold text-secondary-red",
               status === "HADIR" && "font-bold text-[#01C46B]",
               !["TIDAK HADIR", "HADIR"].includes(status) && "font-bold text-[#5bb4e1]",
@@ -59,10 +53,10 @@ export const columns = [
   columnHelper.display({
     id: "check_in",
     size: 80,
-    header: () => createColumn("Check In", "text-left text-[#202124] font-bold text-sm"),
+    header: () => createColumn("Check In", "text-center text-[#202124] font-bold text-sm"),
     cell: info => (
       <div className="text-sm">
-        <p className="py-1">
+        <p className="py-1 text-center">
           {info.row.original.attendances?.[0]?.checkInTime
             ? getTime(info.row.original.attendances?.[0]?.checkInTime ?? "") || "-"
             : "-"}
@@ -73,10 +67,10 @@ export const columns = [
   columnHelper.display({
     id: "check_out",
     size: 80,
-    header: () => createColumn("Kantor", "text-left text-[#202124] font-bold text-sm"),
+    header: () => createColumn("Check Out", "text-center text-[#202124] font-bold text-sm"),
     cell: info => (
       <div className="text-sm">
-        <p className="py-1">
+        <p className="py-1 text-center">
           {info.row.original.attendances?.[0]?.checkOutTime
             ? getTime(info.row.original.attendances?.[0]?.checkOutTime ?? "") || "-"
             : "-"}

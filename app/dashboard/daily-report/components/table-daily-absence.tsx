@@ -1,59 +1,48 @@
 "use client";
-import { DataTableX } from "@/components/datatable";
-import SkeletonTable from "@/components/skeleton-state/skeleton-table";
+import { DataTable } from "@/components/table/table-data";
+import { DataTableSkeleton } from "@/components/table/table-skeleton";
 import { useGetDailyReportQuery } from "@/hooks/api/use-get-daily-report";
-import { PaginationState } from "@tanstack/react-table";
-import Image from "next/image";
-import emptyImage from "@/public/images/no-data.webp";
-import React, { useEffect, useState } from "react";
+import dynamic from "next/dynamic";
+import { parseAsInteger, parseAsIsoDate, parseAsString, useQueryState } from "nuqs";
 import { columns } from "./column-header";
-import { getFormattedBranch } from "@/hooks/api/use-get-branch";
-import useMutableSearchParams from "@/hooks/param";
+
+const DataNotFound = dynamic(() => import("@/components/data-not-found"));
 
 const TableAbsence = () => {
-  const branchData = getFormattedBranch();
-  const [pagination, setPagination] = useState<PaginationState>({
-    pageIndex: 0,
-    pageSize: 10,
-  });
-
-  const searchParam = useMutableSearchParams();
-
-  const date = searchParam.get("date") ?? undefined;
-  const branch = searchParam.get("branch") ?? undefined;
-  const search = searchParam.get("search") ?? undefined;
+  const [page] = useQueryState("page", parseAsInteger.withDefault(1));
+  const [limit] = useQueryState("limit", parseAsInteger.withDefault(10));
+  const [search] = useQueryState("search", parseAsString.withDefault(""));
+  const [branch] = useQueryState("branch", parseAsString.withDefault(""));
+  const [date] = useQueryState(
+    "date",
+    parseAsIsoDate.withDefault(new Date(new Date().toISOString().split("T")[0])),
+  );
 
   const { data, isFetching } = useGetDailyReportQuery({
-    limit: 10,
-    page: pagination.pageIndex + 1,
+    limit: limit,
+    page: page,
     filter: {
-      search: search ?? "",
-      branchId: branch ?? branchData?.[0]?.value,
+      search: search ?? undefined,
+      branchId: branch ?? undefined,
       date: date,
     },
   });
 
   if (isFetching) {
-    return <SkeletonTable />;
+    return <DataTableSkeleton />;
   }
 
   return (
     <div className="overflow-y-auto w-full">
       {!!data?.data.length ? (
-        <DataTableX
+        <DataTable
           columns={columns}
           data={data?.data}
-          pageSize={10}
-          totalData={data?.meta && data?.meta.totalCount}
-          pagination={pagination}
-          setPagination={setPagination}
-          pageCount={data?.meta && data?.meta.totalPage}
+          totalItems={data.meta?.totalCount ?? 0}
+          pageSizeOptions={[10, 20, 30, 40, 50]}
         />
       ) : (
-        <div className="flex w-full flex-col items-center justify-center h-96">
-          <Image src={emptyImage} alt="empty data" width={300} height={300} />
-          <p className="text-sm font-bold">Data Absence tidak ditemukan</p>
-        </div>
+        <DataNotFound message="Data Absence tidak ditemukan" />
       )}
     </div>
   );

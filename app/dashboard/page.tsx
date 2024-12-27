@@ -1,15 +1,12 @@
-import Title from "@/components/Title/page-title";
-import SummaryData from "./components/summary-data";
+import { auth } from "@/auth";
+import { redirect } from "next/navigation";
 
-function Page() {
-  return (
-    <div className="flex w-full flex-col">
-      <Title title="Dashboard" />
-      <section className="flex w-full flex-col gap-y-3 rounded-md border border-alice-blue bg-[#fff] p-4 drop-shadow-2xl">
-        <SummaryData />
-      </section>
-    </div>
-  );
+export default async function Dashboard() {
+  const session = await auth();
+
+  if (!session?.user) {
+    return redirect("/");
+  } else {
+    redirect("/dashboard/employee");
+  }
 }
-
-export default Page;

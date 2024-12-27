@@ -11,7 +11,7 @@ export const useGetEmployee = (params: TPaginatedRequest<TEmployeeFilter>) => {
       const { data } = await axiosInstance.get(`/users`, {
         params: {
           page: params.page,
-          limit: params.limit,
+          size: params.limit,
           search: params.filter?.search ?? undefined,
           branchId: params.filter?.branchId ?? undefined,
           positionId: params.filter?.positionId ?? undefined,

@@ -1,32 +1,29 @@
 "use client";
-import { DataTableX } from "@/components/datatable";
+import { DataTable } from "@/components/table/table-data";
+import { DataTableSkeleton } from "@/components/table/table-skeleton";
 import { useGetEmployee } from "@/hooks/api/use-get-employee";
-import { useSession } from "next-auth/react";
-import { columnsAdmin, columnsSuperAdmin } from "./column-header";
-import { PaginationState } from "@tanstack/react-table";
-import { useState } from "react";
-import { TUserData } from "@/types/auth";
 import useMutableSearchParams from "@/hooks/param";
+import { TUserData } from "@/types/auth";
+import { useSession } from "next-auth/react";
+import dynamic from "next/dynamic";
 import { useDebounce } from "use-debounce";
-import SkeletonTable from "@/components/skeleton-state/skeleton-table";
-import Image from "next/image";
-import emptyImage from "@/public/images/no-data.webp";
+import { columns, columnsAdmin } from "./column-header";
+
+const DataNotFound = dynamic(() => import("@/components/data-not-found"));
+
 export default function TableEmployee() {
   const session = useSession();
 
   const user = session.data?.user as unknown as TUserData;
 
-  const [pagination, setPagination] = useState<PaginationState>({
-    pageIndex: 0,
-    pageSize: 10,
-  });
-
   const searchParams = useMutableSearchParams();
+
+  const page = searchParams.get("page");
 
   const [search] = useDebounce(searchParams.get("search"), 1000);
 
   const { data, isFetching } = useGetEmployee({
-    page: pagination.pageIndex + 1,
+    page: !!page ? Number(page) : 1,
     filter: {
       search: search ?? "",
       branchId: searchParams.get("branch") ?? "",
@@ -35,26 +32,20 @@ export default function TableEmployee() {
   });
 
   if (isFetching) {
-    return <SkeletonTable />;
+    return <DataTableSkeleton />;
   }
 
   return (
     <div className="overflow-y-auto w-full">
       {!!data?.data.length ? (
-        <DataTableX
-          columns={user?.role === "SUPER_ADMIN" ? columnsSuperAdmin : columnsAdmin}
+        <DataTable
+          columns={user?.role === "SUPER_ADMIN" ? [...columns, ...columnsAdmin] : columns}
           data={data?.data}
-          pageSize={10}
-          totalData={data?.meta && data?.meta.totalCount}
-          pagination={pagination}
-          setPagination={setPagination}
-          pageCount={data?.meta && data?.meta.totalPage}
+          totalItems={data.meta?.totalCount ?? 0}
+          pageSizeOptions={[10, 20, 30, 40, 50]}
         />
       ) : (
-        <div className="flex w-full flex-col items-center justify-center h-96">
-          <Image src={emptyImage} alt="empty data" width={300} height={300} />
-          <p className="text-sm font-bold">Data karyawan tidak ditemukan</p>
-        </div>
+        <DataNotFound message="Data karyawan tidak ditemukan" />
       )}
     </div>
   );

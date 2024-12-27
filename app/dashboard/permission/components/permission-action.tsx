@@ -1,11 +1,15 @@
 import { useSession } from "next-auth/react";
-import React, { useState } from "react";
-import { FiEdit2, FiEye } from "react-icons/fi";
+import { useState } from "react";
 
-import { TUserData } from "@/types/auth";
-import { PermissionModalAction } from "./permission-modal";
-import { TPermission } from "@/types/permission";
 import { Button } from "@/components/ui/button";
+import { TUserData } from "@/types/auth";
+import { TPermission } from "@/types/permission";
+import { Eye, Pencil } from "lucide-react";
+import dynamic from "next/dynamic";
+
+const PermissionModalAction = dynamic(() =>
+  import("./permission-modal").then(mod => mod.PermissionModalAction),
+);
 
 interface PermissionActionProps {
   tipe: "approve" | "detail";
@@ -31,19 +35,14 @@ export const PermissionAction = (props: PermissionActionProps) => {
         />
       )}
 
-      <Button
-        onClick={() => onClick()}
-        variant="secondary"
-        className="bg-secondary-blue text-white hover:bg-primary-blue"
-      >
+      <Button variant="ghost" className="h-8 w-8 p-0" onClick={onClick}>
         {props.tipe === "approve" && user.role === "SUPER_ADMIN" ? (
           <>
-            <FiEdit2 className="mr-2" /> <span>Approve</span>
+            <Pencil className="mr-2" />
           </>
         ) : (
           <>
-            <FiEye className="mr-2" />
-            <span>Detail</span>
+            <Eye className="h-4 w-4" />
           </>
         )}
       </Button>

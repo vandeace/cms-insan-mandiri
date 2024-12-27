@@ -10,7 +10,7 @@ export const useGetDailyReportQuery = (params: TPaginatedRequest<TAbsenceFilter>
       const { data } = await axiosInstance.get("/reports", {
         params: {
           page: params.page,
-          limit: params.limit,
+          size: params.limit,
           search: params.filter?.search,
           branchId: params.filter?.branchId,
           date: params.filter?.date === "" ? new Date() : params.filter?.date,

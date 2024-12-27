@@ -5,6 +5,8 @@ import { z } from "zod";
 
 async function getUser(email: string, password: string): Promise<User | undefined> {
   try {
+    console.log("email :", email);
+    console.log("password :", password);
     const res = await fetch(`${process.env.NEXT_PUBLIC_BE_URL_PRODUCTION}/auth/login`, {
       method: "POST",
       body: JSON.stringify({ email, password }),

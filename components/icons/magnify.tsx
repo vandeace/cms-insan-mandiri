@@ -1,4 +1,4 @@
-import { SVGProps } from "react";
+import { JSX, SVGProps } from "react";
 
 export const MagnifyIcon = (props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) => {
   return (

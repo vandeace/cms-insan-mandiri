@@ -10,8 +10,9 @@ export const useGetPermission = (params: TPaginatedRequest<TPermissionFilter>) =
     queryFn: async () => {
       const { data } = await axiosInstance.get(`/permissions`, {
         params: {
+          search: params?.filter?.search ?? undefined,
           page: params.page ?? 1,
-          limit: params.limit ?? 10,
+          size: params.limit ?? 10,
           permissionTypeId: params?.filter?.permissionTypeId ?? undefined,
           status: params.filter?.status ?? undefined,
         },
