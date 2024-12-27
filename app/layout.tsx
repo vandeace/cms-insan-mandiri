@@ -11,6 +11,12 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Dashboard",
   description: "Dashboard CMS Insan Mandiri",
+  icons: [
+    {
+      url: "images/logo-short.png",
+      sizes: "32x32",
+    },
+  ],
 };
 
 export default function RootLayout({

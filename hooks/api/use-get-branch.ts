@@ -21,7 +21,9 @@ export const UseGetAllBranch = (params: TPaginatedRequest<TBranchFilter>) => {
 };
 
 export const getFormattedBranch = () => {
-  const { data } = UseGetAllBranch({});
+  const { data } = UseGetAllBranch({
+    limit: 0,
+  });
 
   return data?.data.length
     ? data.data.map(item => ({

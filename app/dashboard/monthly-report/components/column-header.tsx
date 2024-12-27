@@ -13,7 +13,7 @@ export const columns = [
     size: 80,
     header: () => createColumn("Nama", "text-left text-[#202124] font-bold text-sm"),
     cell: info => (
-      <div className="text-sm">
+      <div className="text-sm md:min-w-[200px]">
         <p className="py-1">{info.row.original.name}</p>
       </div>
     ),

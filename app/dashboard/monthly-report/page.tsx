@@ -5,7 +5,7 @@ import TableAbsenceMonthly from "./components/table-monthly-absence";
 function Page() {
   return (
     <div className="flex w-full flex-col">
-      <Title title="Laporan Bulanan" />
+      <Title title="Laporan Absensi Bulanan" />
       <section className="flex w-full flex-col gap-y-3 rounded-md border border-alice-blue  p-4 drop-shadow-2xl">
         <TableFilterMonthlyAbsence />
         <TableAbsenceMonthly />

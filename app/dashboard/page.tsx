@@ -1,3 +1,12 @@
-export default function Page() {
-  return <div className="flex w-full flex-col">test</div>;
+import { auth } from "@/auth";
+import { redirect } from "next/navigation";
+
+export default async function Dashboard() {
+  const session = await auth();
+
+  if (!session?.user) {
+    return redirect("/");
+  } else {
+    redirect("/dashboard/employee");
+  }
 }

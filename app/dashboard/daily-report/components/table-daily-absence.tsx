@@ -1,7 +1,6 @@
 "use client";
 import { DataTable } from "@/components/table/table-data";
 import { DataTableSkeleton } from "@/components/table/table-skeleton";
-import { getFormattedBranch } from "@/hooks/api/use-get-branch";
 import { useGetDailyReportQuery } from "@/hooks/api/use-get-daily-report";
 import dynamic from "next/dynamic";
 import { parseAsInteger, parseAsIsoDate, parseAsString, useQueryState } from "nuqs";
@@ -10,7 +9,6 @@ import { columns } from "./column-header";
 const DataNotFound = dynamic(() => import("@/components/data-not-found"));
 
 const TableAbsence = () => {
-  const branchData = getFormattedBranch();
   const [page] = useQueryState("page", parseAsInteger.withDefault(1));
   const [limit] = useQueryState("limit", parseAsInteger.withDefault(10));
   const [search] = useQueryState("search", parseAsString.withDefault(""));
@@ -25,7 +23,7 @@ const TableAbsence = () => {
     page: page,
     filter: {
       search: search ?? undefined,
-      branchId: !!branch ? branch : branchData?.[0]?.value,
+      branchId: branch ?? undefined,
       date: date,
     },
   });

@@ -35,7 +35,7 @@ export default function TablePermission() {
           pageSizeOptions={[10, 20, 30, 40, 50]}
         />
       ) : (
-        <DataNotFound message="Data Perizinan tidak ditemukan" />
+        <DataNotFound message="Data Lemburan tidak ditemukan" />
       )}
     </div>
   );

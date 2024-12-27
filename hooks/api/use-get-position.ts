@@ -20,7 +20,9 @@ export const UseGetAllPosition = (params: TPaginatedRequest<null>) => {
 };
 
 export const getFormattedPosition = () => {
-  const { data } = UseGetAllPosition({});
+  const { data } = UseGetAllPosition({
+    limit: 0,
+  });
 
   return data?.data.length
     ? data.data.map(item => ({
