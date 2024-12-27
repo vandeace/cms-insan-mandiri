@@ -1,27 +1,27 @@
 "use client";
-import React from "react";
+import { getFormattedBranch } from "@/hooks/api/use-get-branch";
+import { parseAsString, useQueryState } from "nuqs";
 import { Label } from "../ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select";
-import { getFormattedBranch } from "@/hooks/api/use-get-branch";
-import useMutableSearchParams from "@/hooks/param";
 
 interface TBranchFilter {
   defaultValueBranch?: string;
   disabledAll?: boolean;
 }
 const BranchFilter = ({ defaultValueBranch, disabledAll = false }: TBranchFilter) => {
-  const searchParams = useMutableSearchParams();
+  const [branch, setBranch] = useQueryState("branch", parseAsString.withDefault(""));
+
   const branchData = getFormattedBranch();
 
   const onChangeSelect = (e: string | null) => {
     if (e === "all") {
-      searchParams.delete("branch");
+      setBranch("");
     } else {
-      searchParams.set("branch", e);
+      setBranch(e);
     }
   };
 
-  const value = searchParams.get("branch") ?? defaultValueBranch ?? undefined;
+  const value = branch ?? defaultValueBranch ?? undefined;
 
   return (
     <div>

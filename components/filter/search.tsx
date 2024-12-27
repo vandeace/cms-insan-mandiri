@@ -1,7 +1,6 @@
-import React from "react";
-import { Label } from "../ui/label";
+import { parseAsString, useQueryState } from "nuqs";
 import { Input } from "../ui/input";
-import useMutableSearchParams from "@/hooks/param";
+import { Label } from "../ui/label";
 
 interface TFilterSearch {
   placeholder: string;
@@ -9,7 +8,7 @@ interface TFilterSearch {
   label: string;
 }
 const FilterSearch = ({ name, label, placeholder }: TFilterSearch) => {
-  const searchParams = useMutableSearchParams();
+  const [search, setSearch] = useQueryState(name, parseAsString.withDefault(""));
   return (
     <div>
       <Label htmlFor={name} className="mb-1 block text-sm font-bold">
@@ -18,9 +17,9 @@ const FilterSearch = ({ name, label, placeholder }: TFilterSearch) => {
       <Input
         id={name}
         placeholder={placeholder}
-        defaultValue={searchParams.get(name) ?? undefined}
+        defaultValue={search ?? undefined}
         onChange={e => {
-          searchParams.set(name, e.currentTarget.value);
+          setSearch(e.currentTarget.value);
         }}
       />
     </div>

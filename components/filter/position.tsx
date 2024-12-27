@@ -1,23 +1,22 @@
 "use client";
-import React from "react";
+import { getFormattedPosition } from "@/hooks/api/use-get-position";
+import { parseAsString, useQueryState } from "nuqs";
 import { Label } from "../ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select";
-import useMutableSearchParams from "@/hooks/param";
-import { getFormattedPosition } from "@/hooks/api/use-get-position";
 
 const PositionFilter = () => {
-  const searchParams = useMutableSearchParams();
+  const [role, setRole] = useQueryState("role", parseAsString.withDefault(""));
   const positionData = getFormattedPosition();
 
   const onChangeSelect = (e: string | null) => {
     if (e === "all") {
-      searchParams.delete("role");
+      setRole("");
     } else {
-      searchParams.set("role", e);
+      setRole(e);
     }
   };
 
-  const defaultValue = searchParams.get("role") ?? undefined;
+  const defaultValue = role ?? undefined;
 
   return (
     <div>

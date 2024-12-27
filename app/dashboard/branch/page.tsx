@@ -8,8 +8,8 @@ async function Page() {
     <div className="flex w-full flex-col">
       <Title urlBtn="/dashboard/branch/add" title="Data Kantor" />
       <section className="flex w-full flex-col gap-y-3 rounded-md border-t border-t-alice-blue  p-4 ">
-        <TableFilter />
         <Suspense fallback={<p>Loading feeds...</p>}>
+          <TableFilter />
           <TableBranch />
         </Suspense>
       </section>

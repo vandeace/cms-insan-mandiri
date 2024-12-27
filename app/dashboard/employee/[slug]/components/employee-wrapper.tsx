@@ -3,14 +3,13 @@
 import EmployeeForm from "./employee-form";
 import { useGetDetailEmployee } from "@/hooks/api/use-get-detail-employee";
 import SkeletonForm from "@/components/skeleton-state/skeleton-form";
+import { useParams } from "next/navigation";
 
-interface TEmployeeWrapper {
-  slug: string | undefined;
-}
-
-const EmployeeWrapper: React.FC<TEmployeeWrapper> = ({ slug }) => {
-  const userId = slug !== "add" ? (slug as string) : undefined;
-  const { data: dataEmployee, isFetching } = useGetDetailEmployee(userId);
+const EmployeeWrapper = () => {
+  const { slug } = useParams<{ slug: string }>();
+  const { data: dataEmployee, isFetching } = useGetDetailEmployee(
+    slug === "add" ? undefined : slug,
+  );
 
   if (isFetching) {
     return <SkeletonForm />;

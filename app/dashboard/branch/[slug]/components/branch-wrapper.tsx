@@ -3,12 +3,10 @@
 import SkeletonForm from "@/components/skeleton-state/skeleton-form";
 import { useGetBranchDetail } from "@/hooks/api/use-get-branch";
 import BranchForm from "./branch-form";
+import { useParams } from "next/navigation";
 
-interface TBranchWrapper {
-  slug: string | undefined;
-}
-
-const BranchWrapper: React.FC<TBranchWrapper> = ({ slug }) => {
+const BranchWrapper = () => {
+  const { slug } = useParams<{ slug: string }>();
   const branchId = slug !== "add" ? (slug as string) : undefined;
   const { data, isFetching } = useGetBranchDetail(branchId);
 

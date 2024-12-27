@@ -7,10 +7,9 @@ async function Page() {
   return (
     <div className="flex w-full flex-col">
       <Title title="Data Perizinan" />
-
       <section className="flex w-full flex-col gap-y-3 rounded-md border border-alice-blue  p-4">
-        <TableFilter />
         <Suspense fallback={<p>Loading feed...</p>}>
+          <TableFilter />
           <TablePermission />
         </Suspense>
       </section>
