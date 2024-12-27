@@ -2,8 +2,9 @@
 import { DataTable } from "@/components/table/table-data";
 import { DataTableSkeleton } from "@/components/table/table-skeleton";
 import { useGetDailyReportQuery } from "@/hooks/api/use-get-daily-report";
+import { formatTime } from "@/utils/parsed-time";
 import dynamic from "next/dynamic";
-import { parseAsInteger, parseAsIsoDate, parseAsString, useQueryState } from "nuqs";
+import { parseAsInteger, parseAsString, useQueryState } from "nuqs";
 import { columns } from "./column-header";
 
 const DataNotFound = dynamic(() => import("@/components/data-not-found"));
@@ -13,10 +14,7 @@ const TableAbsence = () => {
   const [limit] = useQueryState("limit", parseAsInteger.withDefault(10));
   const [search] = useQueryState("search", parseAsString.withDefault(""));
   const [branch] = useQueryState("branch", parseAsString.withDefault(""));
-  const [date] = useQueryState(
-    "date",
-    parseAsIsoDate.withDefault(new Date(new Date().toISOString().split("T")[0])),
-  );
+  const [date] = useQueryState("date", parseAsString.withDefault(formatTime(new Date())));
 
   const { data, isFetching } = useGetDailyReportQuery({
     limit: limit,

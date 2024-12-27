@@ -1,7 +1,8 @@
 "use client";
+import { formatTime } from "@/utils/parsed-time";
+import { parseAsString, useQueryState } from "nuqs";
 import { DatePicker } from "../ui/date-picker";
 import { Label } from "../ui/label";
-import { parseAsIsoDate, useQueryState } from "nuqs";
 
 interface TFilterSearch {
   placeholder?: string;
@@ -10,14 +11,11 @@ interface TFilterSearch {
 }
 
 const FilterDate = ({ name, label }: TFilterSearch) => {
-  const [date, setDate] = useQueryState(
-    "date",
-    parseAsIsoDate.withDefault(new Date(new Date().toISOString().split("T")[0])),
-  );
+  const [date, setDate] = useQueryState("date", parseAsString.withDefault(formatTime(new Date())));
 
   const onSelect = async (selectedDate: Date | undefined) => {
     if (selectedDate) {
-      await setDate(selectedDate);
+      await setDate(formatTime(selectedDate));
     } else {
       await setDate(null);
     }
