@@ -15,7 +15,11 @@ export const columns = [
       <div className="text-sm">
         <p className="py-1 text-center">
           {new Date(info.row.original.date).toLocaleString("id-ID", {
-            day: "numeric",
+            weekday: "long",
+          })}
+          {", "}
+          {new Date(info.row.original.date).toLocaleString("id-ID", {
+            day: "2-digit",
             month: "long",
             year: "numeric",
           })}
@@ -31,17 +35,7 @@ export const columns = [
       const data = info.row.original;
       return (
         <div className="text-sm flex justify-center items-center">
-          <Badge
-            variant={
-              data.isHoliday || data.isWeekend
-                ? "outline"
-                : data.status === "HADIR"
-                  ? "success"
-                  : "destructive"
-            }
-          >
-            {data.isHoliday || data.isWeekend ? "Libur" : data.status}
-          </Badge>
+          <Badge variant={data.status === "HADIR" ? "success" : "destructive"}>{data.status}</Badge>
         </div>
       );
     },

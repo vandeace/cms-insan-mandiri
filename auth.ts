@@ -5,8 +5,6 @@ import { z } from "zod";
 
 async function getUser(email: string, password: string): Promise<User | undefined> {
   try {
-    console.log("email :", email);
-    console.log("password :", password);
     const res = await fetch(`${process.env.NEXT_PUBLIC_BE_URL_PRODUCTION}/auth/login`, {
       method: "POST",
       body: JSON.stringify({ email, password }),
@@ -26,6 +24,7 @@ async function getUser(email: string, password: string): Promise<User | undefine
 
 export const { auth, handlers, signIn, signOut } = NextAuth({
   ...authConfig,
+  debug: true,
   providers: [
     Credentials({
       async authorize(credentials) {
@@ -36,7 +35,6 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
         if (parsedCredentials.success) {
           const { email, password } = parsedCredentials.data;
           const user = await getUser(email, password);
-          console.log(user, "user");
           if (!user) {
             return null;
           } else {
