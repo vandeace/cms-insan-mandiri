@@ -1,8 +1,16 @@
 version: "3"
 services:
   nextjs:
-    build: .
+    container_name: insan-cms
+    build:
+      context: .
+      dockerfile: Dockerfile.prod
+      args:
+        - NEXT_PUBLIC_BE_URL_PRODUCTION=${NEXT_PUBLIC_BE_URL_PRODUCTION}
     ports:
-      - "3000:3000"
+      - "3002:3002"
     environment:
-      - NODE_ENV=production
+      - NEXT_PUBLIC_BE_URL_PRODUCTION=https://api.insanfotocopy.com/api
+      - AUTH_SECRET=ueMMAvkxluF0ecSmP4eGXIwyJHR2xurIvaWzinhYfJo=
+      - AUTH_TRUST_HOST=http://localhost:3002
+      - NEXTAUTH_URL=http://localhost:3002
