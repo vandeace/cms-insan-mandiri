@@ -14,13 +14,11 @@ import { useState } from "react";
 
 interface CellActionProps<T extends { id: string | number }> {
   data: T;
-  onConfirm: () => void;
   tipe: "employee" | "branch";
 }
 
 export const CellAction = <T extends { id: string | number }>({
   data,
-  onConfirm,
   tipe,
 }: CellActionProps<T>) => {
   const [open, setOpen] = useState(false);
@@ -28,7 +26,7 @@ export const CellAction = <T extends { id: string | number }>({
 
   return (
     <div className="flex-1 flex justify-center items-center">
-      <AlertModal isOpen={open} onClose={() => setOpen(false)} onConfirm={onConfirm} />
+      <AlertModal isOpen={open} onClose={() => setOpen(false)} id={data.id} tipe={tipe} />
       <DropdownMenu modal={false}>
         <DropdownMenuTrigger asChild>
           <Button variant="ghost" className="h-8 w-8 p-0">

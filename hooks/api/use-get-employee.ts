@@ -22,14 +22,3 @@ export const useGetEmployee = (params: TPaginatedRequest<TEmployeeFilter>) => {
     },
   });
 };
-
-// export const useGetEmployeeDetail = (id: string | undefined) => {
-//   return useQuery<TSingleResponse<TEmployee>>(
-//     ["employee-detail", id],
-//     () => employeeDetailRequest(id ?? ""),
-//     {
-//       enabled: id ? true : false,
-//       keepPreviousData: false,
-//     }
-//   );
-// };

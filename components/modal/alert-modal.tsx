@@ -2,17 +2,21 @@
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Modal } from "@/components/ui/modal";
+import { toast } from "react-toastify";
+import { useDeleteEmployee } from "@/hooks/api/use-delete-employee";
 
 interface AlertModalProps {
   isOpen: boolean;
   onClose: () => void;
-  onConfirm: () => void;
   loading?: boolean;
+  tipe: "employee" | "branch";
+  id: string | number;
 }
 
-export const AlertModal: React.FC<AlertModalProps> = ({ isOpen, onClose, onConfirm, loading }) => {
+export const AlertModal: React.FC<AlertModalProps> = ({ isOpen, onClose, loading, id, tipe }) => {
   const [isMounted, setIsMounted] = useState(false);
 
+  const { mutate } = useDeleteEmployee();
   useEffect(() => {
     setIsMounted(true);
   }, []);
@@ -20,6 +24,34 @@ export const AlertModal: React.FC<AlertModalProps> = ({ isOpen, onClose, onConfi
   if (!isMounted) {
     return null;
   }
+
+  const onSuccessHandle = () => {
+    toast.success(`Success Delete Data`, {
+      position: "top-center",
+    });
+  };
+  const onErrorHandle = () => {
+    toast.error(`Fail Delete Data`, {
+      position: "top-center",
+    });
+  };
+
+  const onDeleteConfirm = () => {
+    console.log("deleteid:", id);
+    if (tipe === "employee") {
+      mutate(
+        {
+          id: String(id),
+        },
+        {
+          onSuccess: onSuccessHandle,
+          onError: onErrorHandle,
+        },
+      );
+    } else {
+      //TODO: add branch delete
+    }
+  };
 
   return (
     <Modal
@@ -32,7 +64,7 @@ export const AlertModal: React.FC<AlertModalProps> = ({ isOpen, onClose, onConfi
         <Button disabled={loading} variant="outline" onClick={onClose}>
           Cancel
         </Button>
-        <Button disabled={loading} variant="destructive" onClick={onConfirm}>
+        <Button disabled={loading} variant="destructive" onClick={onDeleteConfirm}>
           Continue
         </Button>
       </div>

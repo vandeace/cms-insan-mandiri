@@ -159,7 +159,7 @@ export function DataTable<TData, TValue>({
               </div>
             </div>
           </div>
-          <div className="flex w-full items-center justify-between gap-2 sm:justify-end">
+          <div className="relative flex w-full items-center justify-between gap-2 sm:justify-end">
             <div className="flex w-[150px] items-center justify-center text-sm font-medium">
               {totalItems > 0 ? (
                 <>

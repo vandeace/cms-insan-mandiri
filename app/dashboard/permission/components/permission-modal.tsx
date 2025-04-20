@@ -87,7 +87,7 @@ export const PermissionModalAction: React.FC<PermissionModalActionProps> = ({
                           position: "top-center",
                         });
                         queryClient.invalidateQueries({
-                          queryKey: ["permission-data"],
+                          queryKey: ["permission"],
                         });
                       },
                       onError: () => {
@@ -114,7 +114,6 @@ export const PermissionModalAction: React.FC<PermissionModalActionProps> = ({
                       onSuccess: () => {
                         queryClient.resetQueries({
                           queryKey: ["permission"],
-                          exact: true,
                         });
                         closeModal();
                         toast.success(`Berhasil setujui Perizinan`, {
