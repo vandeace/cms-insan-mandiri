@@ -50,6 +50,6 @@ export const columnsAdmin = [
     id: "action",
     size: 80,
     header: () => createColumn("Action", "text-center text-[#202124] font-bold text-sm"),
-    cell: info => <CellAction data={info.row.original} onConfirm={() => {}} tipe="branch" />,
+    cell: info => <CellAction data={info.row.original} tipe="branch" />,
   }),
 ];
