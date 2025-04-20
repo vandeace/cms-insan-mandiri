@@ -4,19 +4,22 @@ import { Button } from "@/components/ui/button";
 import { Modal } from "@/components/ui/modal";
 import { toast } from "react-toastify";
 import { useDeleteEmployee } from "@/hooks/api/use-delete-employee";
+import { useDeleteCustomer } from "@/hooks/api/use-delete-customer";
 
 interface AlertModalProps {
   isOpen: boolean;
   onClose: () => void;
   loading?: boolean;
-  tipe: "employee" | "branch";
+  tipe: "employee" | "branch" | "customer";
   id: string | number;
 }
 
 export const AlertModal: React.FC<AlertModalProps> = ({ isOpen, onClose, loading, id, tipe }) => {
   const [isMounted, setIsMounted] = useState(false);
 
-  const { mutate } = useDeleteEmployee();
+  const { mutate: mutateEmployee } = useDeleteEmployee();
+  const { mutate: mutateCustomer } = useDeleteCustomer();
+
   useEffect(() => {
     setIsMounted(true);
   }, []);
@@ -29,6 +32,7 @@ export const AlertModal: React.FC<AlertModalProps> = ({ isOpen, onClose, loading
     toast.success(`Success Delete Data`, {
       position: "top-center",
     });
+    onClose();
   };
   const onErrorHandle = () => {
     toast.error(`Fail Delete Data`, {
@@ -39,7 +43,17 @@ export const AlertModal: React.FC<AlertModalProps> = ({ isOpen, onClose, loading
   const onDeleteConfirm = () => {
     console.log("deleteid:", id);
     if (tipe === "employee") {
-      mutate(
+      mutateEmployee(
+        {
+          id: String(id),
+        },
+        {
+          onSuccess: onSuccessHandle,
+          onError: onErrorHandle,
+        },
+      );
+    } else if (tipe === "customer") {
+      mutateCustomer(
         {
           id: String(id),
         },

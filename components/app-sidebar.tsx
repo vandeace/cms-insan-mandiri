@@ -45,6 +45,10 @@ const data = {
           title: "Branch",
           url: "/dashboard/branch",
         },
+        {
+          title: "Customer",
+          url: "/dashboard/customer",
+        },
       ],
     },
     {

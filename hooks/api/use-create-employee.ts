@@ -13,6 +13,8 @@ export const useCreateEmployee = () => {
         positionId: formData.positionId,
         branchId: formData.branchId,
         phoneNumber: formData.phoneNumber,
+        role: formData.role,
+        address: formData.address,
       };
 
       const { data } = await axiosInstance.post(`/users`, requestData);

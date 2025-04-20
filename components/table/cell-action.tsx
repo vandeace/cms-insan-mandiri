@@ -14,7 +14,7 @@ import { useState } from "react";
 
 interface CellActionProps<T extends { id: string | number }> {
   data: T;
-  tipe: "employee" | "branch";
+  tipe: "employee" | "branch" | "customer";
 }
 
 export const CellAction = <T extends { id: string | number }>({

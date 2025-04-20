@@ -33,7 +33,7 @@ export default function InputForm({
         <FormItem>
           {label && <FormLabel>{label}</FormLabel>}
           <FormControl>
-            <Input {...field} type={type} placeholder={placeholder} />
+            <Input {...field} type={type} placeholder={placeholder} value={field.value ?? ""} />
           </FormControl>
           {description && <FormDescription>{description}</FormDescription>}
           <FormMessage />
