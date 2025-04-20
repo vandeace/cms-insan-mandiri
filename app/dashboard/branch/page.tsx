@@ -3,7 +3,7 @@ import TableFilter from "./components/table-filter";
 import Title from "@/components/Title/page-title";
 import TableBranch from "./components/table-branch";
 
-async function Page() {
+async function Pages() {
   return (
     <div className="flex w-full flex-col">
       <Title urlBtn="/dashboard/branch/add" title="Data Kantor" />
@@ -17,4 +17,4 @@ async function Page() {
   );
 }
 
-export default Page;
+export default Pages;
