@@ -1,9 +1,12 @@
 import { TEmployeeEditForm } from "@/types/employee";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import axiosInstance from "@/config/api";
 
 export const useUpdateEmployee = () => {
+  const queryClient = useQueryClient();
+
   return useMutation({
+    mutationKey: ["update-employee"],
     mutationFn: async (formData: TEmployeeEditForm) => {
       const requestData = {
         nik: formData.nik,
@@ -18,6 +21,10 @@ export const useUpdateEmployee = () => {
       const { data } = await axiosInstance.patch(`/users/${formData.id}`, requestData);
 
       return data;
+    },
+    onSuccess: (_, variables) => {
+      queryClient.invalidateQueries({ queryKey: ["employee"] });
+      queryClient.invalidateQueries({ queryKey: ["employee-detail", variables.id] });
     },
   });
 };
