@@ -49,6 +49,10 @@ const data = {
           title: "Customer",
           url: "/dashboard/customer",
         },
+        {
+          title: "Model Mesin",
+          url: "/dashboard/machine-model",
+        },
       ],
     },
     {

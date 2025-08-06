@@ -1,6 +1,10 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-pnpm test
+echo "\033[34m Running type check... \033[0m"
+pnpm run check
 
-echo "\033[32m Success Pre-commit Test ✅✅✅ \033[0m"
+echo "\033[34m Running lint check... \033[0m"
+pnpm run lint
+
+echo "\033[32m Success Pre-commit checks ✅✅✅ \033[0m"
