@@ -5,12 +5,13 @@ import { Modal } from "@/components/ui/modal";
 import { toast } from "react-toastify";
 import { useDeleteEmployee } from "@/hooks/api/use-delete-employee";
 import { useDeleteCustomer } from "@/hooks/api/use-delete-customer";
+import { useDeleteMachineModel } from "@/hooks/api/use-delete-machine-model";
 
 interface AlertModalProps {
   isOpen: boolean;
   onClose: () => void;
   loading?: boolean;
-  tipe: "employee" | "branch" | "customer";
+  tipe: "employee" | "branch" | "customer" | "machine-model";
   id: string | number;
 }
 
@@ -19,6 +20,7 @@ export const AlertModal: React.FC<AlertModalProps> = ({ isOpen, onClose, loading
 
   const { mutate: mutateEmployee } = useDeleteEmployee();
   const { mutate: mutateCustomer } = useDeleteCustomer();
+  const { mutate: mutateMachineModel } = useDeleteMachineModel();
 
   useEffect(() => {
     setIsMounted(true);
@@ -54,6 +56,16 @@ export const AlertModal: React.FC<AlertModalProps> = ({ isOpen, onClose, loading
       );
     } else if (tipe === "customer") {
       mutateCustomer(
+        {
+          id: String(id),
+        },
+        {
+          onSuccess: onSuccessHandle,
+          onError: onErrorHandle,
+        },
+      );
+    } else if (tipe === "machine-model") {
+      mutateMachineModel(
         {
           id: String(id),
         },
