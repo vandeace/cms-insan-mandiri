@@ -3,7 +3,7 @@ import React, { Suspense } from "react";
 import TableAbsence from "./components/table-daily-absence";
 import TableFilter from "./components/filter-daily-absence";
 
-function Page() {
+async function Page() {
   return (
     <div className="flex w-full flex-col">
       <Title title="Laporan Absensi Harian" />
