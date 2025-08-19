@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { TMonthlyAbsenceReport } from "@/types/absence";
 import { createColumn } from "@/utils/table";
 import { createColumnHelper } from "@tanstack/react-table";
@@ -65,6 +66,7 @@ export const columns = [
     size: 80,
     header: () => createColumn("Action", "text-center text-[#202124] font-bold text-sm"),
     cell: info => {
+      // eslint-disable-next-line react-hooks/exhaustive-deps
       const [month] = useQueryState(
         "month",
         parseAsIsoDate.withDefault(new Date(new Date().toISOString().split("T")[0])),

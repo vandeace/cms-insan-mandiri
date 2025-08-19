@@ -1,10 +1,9 @@
 "use client";
 import { Button } from "@/components/ui/button";
-import { TOvertime } from "@/types/overtime";
-import { useSession } from "next-auth/react";
-import React, { useState } from "react";
-import { Eye, Pencil } from "lucide-react";
 import { TUserData } from "@/types/auth";
+import { TOvertime } from "@/types/overtime";
+import { Eye, Pencil } from "lucide-react";
+import { useSession } from "next-auth/react";
 // Import the modal when it's available
 // import { OvertimeModalAction } from "./overtime-modal";
 
@@ -14,10 +13,8 @@ interface ClientOvertimeActionProps {
 }
 
 export default function ClientOvertimeAction(props: ClientOvertimeActionProps) {
-  const [modal, setModal] = useState(false);
-
   const onClick = () => {
-    setModal(true);
+    // setModal(true);
   };
 
   const session = useSession();

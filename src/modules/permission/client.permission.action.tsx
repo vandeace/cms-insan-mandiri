@@ -1,10 +1,9 @@
 "use client";
 import { Button } from "@/components/ui/button";
-import { TPermission } from "@/types/permission";
-import { useSession } from "next-auth/react";
-import React, { useState } from "react";
-import { Eye, Pencil } from "lucide-react";
 import { TUserData } from "@/types/auth";
+import { TPermission } from "@/types/permission";
+import { Eye, Pencil } from "lucide-react";
+import { useSession } from "next-auth/react";
 
 interface ClientPermissionActionProps {
   tipe: "approve" | "detail";
@@ -12,10 +11,10 @@ interface ClientPermissionActionProps {
 }
 
 export default function ClientPermissionAction(props: ClientPermissionActionProps) {
-  const [modal, setModal] = useState(false);
+  // const [modal, setModal] = useState(false);
 
   const onClick = () => {
-    setModal(true);
+    // setModal(true);
   };
 
   const session = useSession();
