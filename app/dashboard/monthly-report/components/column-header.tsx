@@ -74,7 +74,10 @@ export const columns = [
           <Link
             href={`/dashboard/monthly-report/${info.row.original.id}${
               month
-                ? `?month=${month.getFullYear()}-${String(month.getMonth() + 1).padStart(2, "0")}-01`
+                ? `?month=${month.getFullYear()}-${String(month.getMonth() + 1).padStart(
+                    2,
+                    "0",
+                  )}-01`
                 : ""
             }`}
           >

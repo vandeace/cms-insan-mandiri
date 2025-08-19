@@ -10,12 +10,12 @@ interface DashboardCardProps {
   classNameIcon?: string;
 }
 
-export default function DashboardCard({ 
-  Icon, 
-  data, 
-  title, 
-  classNameBg, 
-  classNameIcon 
+export default function DashboardCard({
+  Icon,
+  data,
+  title,
+  classNameBg,
+  classNameIcon,
 }: DashboardCardProps) {
   return (
     <div className="rounded-xl border bg-card text-card-foreground shadow h-[125px] flex gap-x-4 items-center p-4">

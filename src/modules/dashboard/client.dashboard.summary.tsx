@@ -18,7 +18,11 @@ export default function ClientDashboardSummary() {
     <div className="grid grid-cols-4 gap-x-7">
       <DashboardCard Icon={FaUsers} title="Karyawan" data={dataEmployee?.meta?.totalCount ?? 0} />
       <DashboardCard Icon={FaBuilding} title="Cabang" data={dataBranch?.meta?.totalCount ?? 0} />
-      <DashboardCard Icon={RiUserSettingsLine} title="Jabatan" data={dataPosition?.meta?.totalCount ?? 0} />
+      <DashboardCard
+        Icon={RiUserSettingsLine}
+        title="Jabatan"
+        data={dataPosition?.meta?.totalCount ?? 0}
+      />
       <DashboardCard Icon={Customer} title="Pelanggan" data={dataCustomer?.meta?.totalCount ?? 0} />
     </div>
   );
