@@ -3,7 +3,8 @@ import EmployeeSearch from "@/components/filter/search";
 import StatusFilter from "@/components/filter/status";
 import { DataTableResetFilter } from "@/components/table/data-table-reset-filter";
 import { useQueryState } from "nuqs";
-export default function TableFilter() {
+
+export default function ClientPermissionFilter() {
   const [search, setSearch] = useQueryState("search");
   const [status, setStatus] = useQueryState("status");
 

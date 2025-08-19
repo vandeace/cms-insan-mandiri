@@ -7,13 +7,12 @@ import { useSession } from "next-auth/react";
 import dynamic from "next/dynamic";
 import { parseAsInteger, parseAsString, useQueryState } from "nuqs";
 import { useDebounce } from "use-debounce";
-import { columns, columnsAdmin } from "./column-header";
+import { columns, columnsAdmin } from "./branch.columns";
 
 const DataNotFound = dynamic(() => import("@/components/data-not-found"));
 
-export default function TableBranch() {
+export default function ClientBranchTableWrapper() {
   const session = useSession();
-
   const user = session.data?.user as unknown as TUserData;
 
   const [search] = useQueryState("search", parseAsString.withDefault(""));
@@ -32,7 +31,7 @@ export default function TableBranch() {
   }
 
   return (
-    <div className="overflow-y-auto w-full">
+    <>
       {!!data?.data ? (
         <DataTable
           columns={user?.role === "SUPER_ADMIN" ? [...columns, ...columnsAdmin] : columns}
@@ -43,6 +42,6 @@ export default function TableBranch() {
       ) : (
         <DataNotFound message="Data Kantor tidak ditemukan" />
       )}
-    </div>
+    </>
   );
 }

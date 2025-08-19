@@ -1,20 +1,13 @@
 import Title from "@/components/Title/page-title";
-import { Suspense } from "react";
-import TablePermission from "./components/table-permission";
-import TableFilter from "./components/table-filter";
+import ServerPermissionMain from "@/src/modules/permission/server.permission.main";
 
-async function Page() {
+export default function PermissionPage() {
   return (
     <div className="flex w-full flex-col">
       <Title title="Data Perizinan" />
-      <section className="flex w-full flex-col gap-y-3 rounded-md border border-alice-blue  p-4">
-        <Suspense fallback={<p>Loading feed...</p>}>
-          <TableFilter />
-          <TablePermission />
-        </Suspense>
+      <section className="flex w-full flex-col gap-y-3 rounded-md border border-alice-blue p-4">
+        <ServerPermissionMain />
       </section>
     </div>
   );
 }
-
-export default Page;

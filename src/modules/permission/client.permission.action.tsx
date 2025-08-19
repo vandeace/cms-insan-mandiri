@@ -1,17 +1,17 @@
+"use client";
 import { Button } from "@/components/ui/button";
-import { TOvertime } from "@/types/overtime";
+import { TPermission } from "@/types/permission";
 import { useSession } from "next-auth/react";
 import React, { useState } from "react";
 import { Eye, Pencil } from "lucide-react";
-import { OvertimeModalAction } from "./overtime-modal";
 import { TUserData } from "@/types/auth";
 
-interface OvertimeActionProps {
+interface ClientPermissionActionProps {
   tipe: "approve" | "detail";
-  overtimeData: TOvertime;
+  permissionData: TPermission;
 }
 
-export const OvertimeAction = (props: OvertimeActionProps) => {
+export default function ClientPermissionAction(props: ClientPermissionActionProps) {
   const [modal, setModal] = useState(false);
 
   const onClick = () => {
@@ -23,14 +23,6 @@ export const OvertimeAction = (props: OvertimeActionProps) => {
 
   return (
     <>
-      {modal && (
-        <OvertimeModalAction
-          closeModal={() => setModal(!modal)}
-          modalIsOpen={modal}
-          overtimeData={props.overtimeData}
-        />
-      )}
-
       <Button variant="ghost" className="h-8 w-8 p-0" onClick={onClick}>
         {props.tipe === "approve" && user.role === "SUPER_ADMIN" ? (
           <>
@@ -44,4 +36,4 @@ export const OvertimeAction = (props: OvertimeActionProps) => {
       </Button>
     </>
   );
-};
+}

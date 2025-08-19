@@ -3,7 +3,7 @@ import { createColumn } from "@/utils/table";
 import { createColumnHelper } from "@tanstack/react-table";
 import { format } from "date-fns";
 import { twMerge } from "tailwind-merge";
-import { PermissionAction } from "./permission-action";
+import ClientPermissionAction from "./client.permission.action";
 
 export const columnHelper = createColumnHelper<TPermission>();
 
@@ -67,7 +67,7 @@ export const columns = [
       const tipe = info.row.original.status === "PENDING" ? "approve" : "detail";
       return (
         <div className="flex justify-center">
-          <PermissionAction permissionData={info.row.original} tipe={tipe} />
+          <ClientPermissionAction permissionData={info.row.original} tipe={tipe} />
         </div>
       );
     },

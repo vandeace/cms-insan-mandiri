@@ -1,39 +1,37 @@
-import { useSession } from "next-auth/react";
-import { useState } from "react";
-
+"use client";
 import { Button } from "@/components/ui/button";
-import { TUserData } from "@/types/auth";
-import { TPermission } from "@/types/permission";
+import { TOvertime } from "@/types/overtime";
+import { useSession } from "next-auth/react";
+import React, { useState } from "react";
 import { Eye, Pencil } from "lucide-react";
-import dynamic from "next/dynamic";
+import { TUserData } from "@/types/auth";
+// Import the modal when it's available
+// import { OvertimeModalAction } from "./overtime-modal";
 
-const PermissionModalAction = dynamic(() =>
-  import("./permission-modal").then(mod => mod.PermissionModalAction),
-);
-
-interface PermissionActionProps {
+interface ClientOvertimeActionProps {
   tipe: "approve" | "detail";
-  permissionData: TPermission;
+  overtimeData: TOvertime;
 }
 
-export const PermissionAction = (props: PermissionActionProps) => {
+export default function ClientOvertimeAction(props: ClientOvertimeActionProps) {
   const [modal, setModal] = useState(false);
 
   const onClick = () => {
     setModal(true);
   };
+
   const session = useSession();
   const user = session.data?.user as unknown as TUserData;
 
   return (
     <>
-      {modal && (
-        <PermissionModalAction
+      {/* {modal && (
+        <OvertimeModalAction
           closeModal={() => setModal(!modal)}
           modalIsOpen={modal}
-          permissionData={props.permissionData}
+          overtimeData={props.overtimeData}
         />
-      )}
+      )} */}
 
       <Button variant="ghost" className="h-8 w-8 p-0" onClick={onClick}>
         {props.tipe === "approve" && user.role === "SUPER_ADMIN" ? (
@@ -48,4 +46,4 @@ export const PermissionAction = (props: PermissionActionProps) => {
       </Button>
     </>
   );
-};
+}

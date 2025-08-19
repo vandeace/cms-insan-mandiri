@@ -3,7 +3,7 @@ import BranchFilter from "@/components/filter/branch";
 import EmployeeSearch from "@/components/filter/search";
 import PositionFilter from "@/components/filter/position";
 
-export default function TableFilter() {
+export default function ClientEmployeeFilter() {
   return (
     <div className="grid grid-cols-3 gap-x-4">
       <div className="grid w-full max-w-sm items-center gap-2">

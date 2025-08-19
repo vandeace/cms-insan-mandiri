@@ -1,26 +1,22 @@
 "use client";
 import { DataTable } from "@/components/table/table-data";
 import { DataTableSkeleton } from "@/components/table/table-skeleton";
-import { useGetPermission } from "@/hooks/api/use-get-permission";
-import { columns } from "./column-header";
-import { parseAsInteger, parseAsString, useQueryState } from "nuqs";
+import { useGetOvertime } from "@/hooks/api/use-get-overtime";
 import dynamic from "next/dynamic";
+import { parseAsInteger, parseAsString, useQueryState } from "nuqs";
+import { columns } from "./overtime.columns";
 
 const DataNotFound = dynamic(() => import("@/components/data-not-found"));
 
-export default function TablePermission() {
+export default function ClientOvertimeTableWrapper() {
   const [page] = useQueryState("page", parseAsInteger.withDefault(1));
   const [limit] = useQueryState("limit", parseAsInteger.withDefault(10));
-  const [permissionTypeId] = useQueryState("permissionTypeId", parseAsString.withDefault(""));
   const [status] = useQueryState("status", parseAsString.withDefault(""));
-  const [search] = useQueryState("search", parseAsString.withDefault(""));
 
-  const { data, isFetching } = useGetPermission({
+  const { data, isFetching } = useGetOvertime({
     page: page,
     limit: limit,
     filter: {
-      search: search,
-      permissionTypeId: permissionTypeId ?? undefined,
       status: status ?? undefined,
     },
   });
@@ -30,7 +26,7 @@ export default function TablePermission() {
   }
 
   return (
-    <div className="overflow-y-auto w-full">
+    <>
       {!!data?.data.length ? (
         <DataTable
           columns={columns}
@@ -39,8 +35,8 @@ export default function TablePermission() {
           pageSizeOptions={[10, 20, 30, 40, 50]}
         />
       ) : (
-        <DataNotFound message="Data Perizinan tidak ditemukan" />
+        <DataNotFound message="Data Lemburan tidak ditemukan" />
       )}
-    </div>
+    </>
   );
 }

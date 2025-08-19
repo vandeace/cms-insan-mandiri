@@ -3,6 +3,7 @@ import axios from "axios";
 import { getSession } from "next-auth/react";
 
 const baseURL = process.env.NEXT_PUBLIC_BE_URL_PRODUCTION || "https://api.insanfotocopy.com/api";
+// const baseURL = process.env.NEXT_PUBLIC_BE_URL_PRODUCTION || "http://localhost:3000/api";
 const ApiClient = () => {
   const defaultOptions = {
     baseURL,

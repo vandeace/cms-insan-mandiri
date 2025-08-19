@@ -8,7 +8,7 @@ export const useGetEmployee = (params: TPaginatedRequest<TEmployeeFilter>) => {
   return useQuery<TResponse<TEmployee>>({
     queryKey: ["employee", params],
     queryFn: async () => {
-      const { data } = await axiosInstance.get(`/users`, {
+      const response = await axiosInstance.get(`/users`, {
         params: {
           page: params.page,
           size: params.limit,
@@ -17,8 +17,9 @@ export const useGetEmployee = (params: TPaginatedRequest<TEmployeeFilter>) => {
           positionId: params.filter?.positionId ?? undefined,
         },
       });
+      console.log("response", response);
 
-      return data;
+      return response.data;
     },
   });
 };

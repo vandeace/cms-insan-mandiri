@@ -1,18 +1,13 @@
 import Title from "@/components/Title/page-title";
-import React, { Suspense } from "react";
-import TableOvertime from "./components/table-overtime";
+import ServerOvertimeMain from "@/src/modules/overtime/server.overtime.main";
 
-function Page() {
+export default function OvertimePage() {
   return (
     <div className="flex w-full flex-col">
       <Title title="Data Lemburan" />
-      <section className="flex w-full flex-col gap-y-3 rounded-md border border-alice-blue  p-4 drop-shadow-2xl">
-        <Suspense fallback={<p>Loading feed...</p>}>
-          <TableOvertime />
-        </Suspense>
+      <section className="flex w-full flex-col gap-y-3 rounded-md border border-alice-blue p-4 drop-shadow-2xl">
+        <ServerOvertimeMain />
       </section>
     </div>
   );
 }
-
-export default Page;

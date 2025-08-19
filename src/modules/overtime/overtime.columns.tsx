@@ -4,7 +4,7 @@ import { createColumnHelper } from "@tanstack/react-table";
 import { format } from "date-fns";
 import { differenceInHours } from "date-fns";
 import { twMerge } from "tailwind-merge";
-import { OvertimeAction } from "./overtime-action";
+import ClientOvertimeAction from "./client.overtime.action";
 
 export const columnHelper = createColumnHelper<TOvertime>();
 
@@ -82,7 +82,7 @@ export const columns = [
       const tipe = info.row.original.status === "PENDING" ? "approve" : "detail";
       return (
         <div>
-          <OvertimeAction overtimeData={info.row.original} tipe={tipe} />
+          <ClientOvertimeAction overtimeData={info.row.original} tipe={tipe} />
         </div>
       );
     },

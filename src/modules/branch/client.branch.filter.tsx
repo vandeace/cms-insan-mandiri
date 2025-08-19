@@ -2,7 +2,7 @@
 import FilterSearch from "@/components/filter/search";
 import React from "react";
 
-export default function TableFilter() {
+export default function ClientBranchFilter() {
   return (
     <div className="grid grid-cols-3">
       <div className="grid w-full max-w-sm items-center gap-1.5">
